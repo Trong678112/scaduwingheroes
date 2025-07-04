@@ -1,0 +1,107 @@
+{
+  "cards": [
+    {
+      "id": "en-001",
+      "language": "english",
+      "theme": "Chào hỏi cơ bản",
+      "vocabulary": [
+        {
+          "word": "Hello",
+          "phonetic": "/həˈloʊ/",
+          "meaning": "Xin chào"
+        },
+        {
+          "word": "Goodbye",
+          "phonetic": "/ɡʊdˈbaɪ/",
+          "meaning": "Tạm biệt"
+        },
+        {
+          "word": "Thank you",
+          "phonetic": "/θæŋk juː/",
+          "meaning": "Cảm ơn"
+        },
+        {
+          "word": "Sorry",
+          "phonetic": "/ˈsɒri/",
+          "meaning": "Xin lỗi"
+        }
+      ]
+    },
+    {
+      "id": "jp-001",
+      "language": "japanese",
+      "theme": "Lời cảm ơn và xin lỗi",
+      "vocabulary": [
+        {
+          "word": "ありがとう",
+          "phonetic": "Arigatou",
+          "meaning": "Cảm ơn"
+        },
+        {
+          "word": "すみません",
+          "phonetic": "Sumimasen",
+          "meaning": "Xin lỗi (dùng trong nhiều TH)"
+        },
+        {
+          "word": "ごめんなさい",
+          "phonetic": "Gomen'nasai",
+          "meaning": "Xin lỗi (thân mật hơn)"
+        }
+      ]
+    },
+    {
+      "id": "en-002",
+      "language": "english",
+      "theme": "Từ vựng học thuật",
+      "vocabulary": [
+        {
+          "word": "Declare",
+          "phonetic": "/dɪˈkleər/",
+          "meaning": "Tuyên bố"
+        },
+        {
+          "word": "Comprehensive",
+          "phonetic": "/ˌkɒmprɪˈhɛnsɪv/",
+          "meaning": "Toàn diện"
+        },
+        {
+          "word": "Ally",
+          "phonetic": "/ˈælaɪ/",
+          "meaning": "Đồng minh"
+        },
+        {
+          "word": "Construct",
+          "phonetic": "/kənˈstrʌkt/",
+          "meaning": "Xây dựng"
+        }
+      ]
+    },
+    {
+      "id": "en-003",
+      "language": "english",
+      "theme": "Từ vựng thông dụng hàng ngày",
+      "vocabulary": [
+        {
+          "word": "Coffee",
+          "phonetic": "/ˈkɒfi/",
+          "meaning": "Cà phê"
+        },
+        {
+          "word": "Paper",
+          "phonetic": "/ˈpeɪpər/",
+          "meaning": "Giấy"
+        },
+        {
+          "word": "Egg",
+          "phonetic": "/ɛɡ/",
+          "meaning": "Trứng"
+        },
+        {
+          "word": "Cast",
+          "phonetic": "/kɑːst/",
+          "meaning": "Ném / Dàn diễn viên (tùy ngữ cảnh)"
+        }
+      ]
+    }
+  ]
+}

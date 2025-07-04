@@ -1,0 +1,40 @@
+/* src/pages/HomePage.css */
+.hero-section {
+  text-align: center;
+  padding: 6rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  max-width: 700px;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-light-color);
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-cta-button {
+  background-color: black;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  border-radius: 50px; /* Bo tròn */
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.hero-cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(74, 144, 226, 0.5);
+}
