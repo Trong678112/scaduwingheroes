@@ -28,25 +28,31 @@
       ]
     },
     {
-      "id": "jp-001",
-      "language": "japanese",
-      "theme": "Lời cảm ơn và xin lỗi",
-      "vocabulary": [
-        {
-          "word": "ありがとう",
-          "phonetic": "Arigatou",
-          "meaning": "Cảm ơn"
-        },
-        {
-          "word": "すみません",
-          "phonetic": "Sumimasen",
-          "meaning": "Xin lỗi (dùng trong nhiều TH)"
-        },
-        {
-          "word": "ごめんなさい",
-          "phonetic": "Gomen'nasai",
-          "meaning": "Xin lỗi (thân mật hơn)"
-        }
+       
+    "id": "jp-001",
+    "language": "japanese",
+    "theme": "あ/ア",
+    "vocabulary": [
+      {
+        "word": "あお。",
+        "phonetic": "Ao",
+        "meaning": "Màu xanh"
+      },
+      {
+        "word": "あつい。",
+        "phonetic": "Atsui",
+        "meaning": "Nóng"
+      },
+      {
+        "word": "あめ。",
+        "phonetic": "Ame",
+        "meaning": "Mưa"
+      },
+      {
+        "word": "あそぶ。",
+        "phonetic": "Asobu",
+        "meaning": "Chơi"
+      }
       ]
     },
     {
@@ -116,7 +122,7 @@
         {
           "word": "fish",
           "phonetic": "/fɪʃ/",
-          "meaning": "Câu cá"
+          "meaning": "Cá"
         },
         {
           "word": "greet",
@@ -148,7 +154,7 @@
         {
           "word": "score",
           "phonetic": "/skɔːr/",
-          "meaning": "Ghi điểm"
+          "meaning": "Điểm số (N)"
         },
         {
           "word": "stop",
@@ -201,7 +207,7 @@
     {
       "word": "healer",
       "phonetic": "/ˈhiː.lər/",
-      "meaning": "Người chữa trị"
+      "meaning": "Người chữa lành"
     },
     {
       "word": "share",
@@ -217,12 +223,12 @@
     {
       "word": "answer",
       "phonetic": "/ˈæn.sər/",
-      "meaning": "Câu trả lời"
+      "meaning": "Trả lời (V)"
     },
     {
       "word": "fresh",
       "phonetic": "/freʃ/",
-      "meaning": "Tươi mới"
+      "meaning": "Tươi, mới"
     },
     {
       "word": "play",
@@ -280,7 +286,7 @@
     {
       "word": "try",
       "phonetic": "/traɪ/",
-      "meaning": "Cố gắng"
+      "meaning": "Thử"
     },
     {
       "word": "price",
@@ -329,7 +335,7 @@
     {
       "word": "juice",
       "phonetic": "/dʒuːs/",
-      "meaning": "Nước ép"
+      "meaning": "Nước trái cây"
     },
     {
       "word": "library",
@@ -361,7 +367,7 @@
     {
       "word": "bake",
       "phonetic": "/beɪk/",
-      "meaning": "Nướng (bánh)"
+      "meaning": "Nướng"
     },
     {
       "word": "win",
@@ -419,7 +425,7 @@
     {
       "word": "plan",
       "phonetic": "/plæn/",
-      "meaning": "Kế hoạch"
+      "meaning": "Lên kế hoạch"
             }
          ]
       },
@@ -430,12 +436,12 @@
     {
       "word": "spell",
       "phonetic": "/spel/",
-      "meaning": "Thần chú"
+      "meaning": "Thần chú/phép thuật"
     },
     {
       "word": "boil",
       "phonetic": "/bɔɪl/",
-      "meaning": "Đun sôi"
+      "meaning": "Luộc"
     },
     {
       "word": "taste",
@@ -497,9 +503,9 @@
       "meaning": "Đi bộ"
     },
     {
-      "word": "milk",
-      "phonetic": "/mɪlk/",
-      "meaning": "Sữa"
+      "word": "meal",
+      "phonetic": "/mɪəl/",
+      "meaning": "Bửa ăn"
     
     }
   ]
@@ -583,7 +589,7 @@
   "language": "english",
   "theme": "Từ vựng nghệ thuật và cảm xúc",
   "vocabulary": [
-    {"word": "gallery", "phonetic": "/ˈɡæl.ər.i/", "meaning": "Phòng tranh"},
+    {"word": "gallery", "phonetic": "/ˈɡæl.ər.i/", "meaning": "Phòng trưng bày"},
     {"word": "wizard", "phonetic": "/ˈwɪz.əd/", "meaning": "Phù thủy"},
     {"word": "emotion", "phonetic": "/ɪˈməʊ.ʃən/", "meaning": "Cảm xúc"},
     {"word": "speak", "phonetic": "/spiːk/", "meaning": "Nói"}
@@ -637,7 +643,7 @@
   "language": "english",
   "theme": "Từ vựng cảm xúc nâng cao",
   "vocabulary": [
-    {"word": "emotionally", "phonetic": "/ɪˈməʊ.ʃən.əl.i/", "meaning": "Về mặt cảm xúc"},
+    {"word": "emotionally", "phonetic": "/ɪˈməʊ.ʃən.əl.i/", "meaning": "Một cách cảm xúc"},
     {"word": "respond", "phonetic": "/rɪˈspɒnd/", "meaning": "Phản hồi"},
     {"word": "comfortable", "phonetic": "/ˈkʌm.fə.tə.bəl/", "meaning": "Thoải mái"},
     {"word": "taste", "phonetic": "/teɪst/", "meaning": "Nếm (vị giác)"}
@@ -659,7 +665,7 @@
   "language": "english",
   "theme": "Từ vựng nghệ thuật chi tiết",
   "vocabulary": [
-    {"word": "frame", "phonetic": "/freɪm/", "meaning": "Khung hình"},
+    {"word": "frame", "phonetic": "/freɪm/", "meaning": "Đóng khung (V)"},
     {"word": "recommend", "phonetic": "/ˌrek.əˈmend/", "meaning": "Khuyến nghị"},
     {"word": "painting", "phonetic": "/ˈpeɪn.tɪŋ/", "meaning": "Bức tranh"},
     {"word": "carefully", "phonetic": "/ˈkeə.fəl.i/", "meaning": "Một cách cẩn thận"
@@ -682,7 +688,7 @@
   "theme": "Từ vựng giao tiếp và sáng tạo",
   "vocabulary": [
     {"word": "gesture", "phonetic": "/ˈdʒes.tʃər/", "meaning": "Cử chỉ"},
-    {"word": "book", "phonetic": "/bʊk/", "meaning": "Đặt chỗ / sách"},
+    {"word": "book", "phonetic": "/bʊk/", "meaning": "Đặt chỗ (V)"},
     {"word": "encourage", "phonetic": "/ɪnˈkʌr.ɪdʒ/", "meaning": "Khuyến khích"},
     {"word": "create", "phonetic": "/kriˈeɪt/", "meaning": "Tạo ra"}
   ]
@@ -725,7 +731,7 @@
   "language": "english",
   "theme": "Từ vựng cẩn trọng và chi tiêu",
   "vocabulary": [
-    {"word": "frame", "phonetic": "/freɪm/", "meaning": "Khung hình"},
+    {"word": "frame", "phonetic": "/freɪm/", "meaning": "Khung hình(N)"},
     {"word": "cautiously", "phonetic": "/ˈkɔː.ʃəs.li/", "meaning": "Một cách thận trọng"},
     {"word": "contact", "phonetic": "/ˈkɒn.tækt/", "meaning": "Liên hệ"},
     {"word": "spend", "phonetic": "/spend/", "meaning": "Chi tiêu"}
@@ -736,7 +742,7 @@
   "language": "english",
   "theme": "Từ vựng thương lượng và mời gọi",
   "vocabulary": [
-    {"word": "bargain", "phonetic": "/ˈbɑː.ɡɪn/", "meaning": "Mặc cả"},
+    {"word": "bargain", "phonetic": "/ˈbɑː.ɡɪn/", "meaning": "Mặc cả/Món hời"},
     {"word": "degree", "phonetic": "/dɪˈɡriː/", "meaning": "Mức độ / bằng cấp"},
     {"word": "fail", "phonetic": "/feɪl/", "meaning": "Thất bại"},
     {"word": "invite", "phonetic": "/ɪnˈvaɪt/", "meaning": "Mời"}
@@ -749,7 +755,7 @@
   "vocabulary": [
     {"word": "interaction", "phonetic": "/ˌɪn.təˈræk.ʃən/", "meaning": "Sự tương tác"},
     {"word": "beautiful", "phonetic": "/ˈbjuː.tɪ.fəl/", "meaning": "Đẹp"},
-    {"word": "loud", "phonetic": "/laʊd/", "meaning": "To (âm thanh)"},
+    {"word": "loud", "phonetic": "/laʊd/", "meaning": "To/Ồn (âm thanh)"},
     {"word": "warm", "phonetic": "/wɔːm/", "meaning": "Ấm áp"}
   ]
 },
@@ -780,7 +786,7 @@
   "theme": "Từ vựng thuyết phục và vượt giới hạn",
   "vocabulary": [
     {"word": "convince", "phonetic": "/kənˈvɪns/", "meaning": "Thuyết phục"},
-    {"word": "smoothly", "phonetic": "/ˈsmuːð.li/", "meaning": "Một cách trôi chảy"},
+    {"word": "smoothly", "phonetic": "/ˈsmuːð.li/", "meaning": "Một cách mượt mà"},
     {"word": "distinct", "phonetic": "/dɪˈstɪŋkt/", "meaning": "Khác biệt, rõ ràng"},
     {"word": "transcend", "phonetic": "/trænˈsend/", "meaning": "Vượt qua, vượt lên"}
   ]
@@ -824,9 +830,116 @@
   "theme": "Từ vựng nhân vật và chiến thắng",
   "vocabulary": [
     {"word": "warrior", "phonetic": "/ˈwɒr.i.ər/", "meaning": "Chiến binh"},
-    {"word": "songstress", "phonetic": "/ˈsɒŋ.strəs/", "meaning": "Nữ ca sĩ (thường mang phong cách cổ điển/fantasy)"},
+    {"word": "songstress", "phonetic": "/ˈsɒŋ.strəs/", "meaning": "Nữ ca sĩ"},
     {"word": "victory", "phonetic": "/ˈvɪk.tər.i/", "meaning": "Chiến thắng"},
-    {"word": "golem", "phonetic": "/ˈɡəʊ.ləm/", "meaning": "Người đất (sinh vật bằng đá/đất trong truyền thuyết)"}
+    {"word": "golem", "phonetic": "/ˈɡəʊ.ləm/", "meaning": "Người đất/đá"}
+  ]
+},
+{
+  "id": "jp-002",
+  "language": "japanese",
+  "theme": " ま/マ ",
+  "vocabulary": [
+    {
+      "word": "まち。",
+      "phonetic": "Machi",
+      "meaning": "Thị trấn, thành phố nhỏ"
+    },
+    {
+      "word": "まど。",
+      "phonetic": "Mado",
+      "meaning": "Cửa sổ"
+    },
+    {
+      "word": "まいにち。",
+      "phonetic": "Mainichi",
+      "meaning": "Mỗi ngày, hằng ngày"
+    },
+    {
+      "word": "まるい。",
+      "phonetic": "Marui",
+      "meaning": "Tròn"
+    }
+  ]
+},
+{
+  "id": "jp-003",
+  "language": "japanese",
+  "theme": " お/オ ",
+  "vocabulary": [
+    {
+      "word": "おかね。",
+      "phonetic": "Okane",
+      "meaning": "Tiền"
+    },
+    {
+      "word": "おちゃ。",
+      "phonetic": "Ocha",
+      "meaning": "Trà"
+    },
+    {
+      "word": "おおきい。",
+      "phonetic": "Ōkii",
+      "meaning": "To, lớn"
+    },
+    {
+      "word": "おわる。",
+      "phonetic": "Owaru",
+      "meaning": "Kết thúc"
+    }
+  ]
+  },{"id": "jp-004",
+    "language": "japanese",
+    "theme": "い/イ",
+    "vocabulary": [
+      {
+        "word": "いえ。",
+        "phonetic": "Ie",
+        "meaning": "Nhà"
+      },
+      {
+        "word": "いぬ。",
+        "phonetic": "Inu",
+        "meaning": "Chó"
+      },
+      {
+        "word": "いく。",
+        "phonetic": "Iku",
+        "meaning": "Đi"
+      },
+      {
+        "word": "いもうと。",
+        "phonetic": "Imōto",
+        "meaning": "Em gái"
+      }
+    ]
+  },
+  {
+    "id": "jp-005",
+    "language": "japanese",
+    "theme": "よ/ヨ",
+    "vocabulary": [
+      {
+        "word": "よる。",
+        "phonetic": "Yoru",
+        "meaning": "Ban đêm"
+      },
+      {
+        "word": "よく。",
+        "phonetic": "Yoku",
+        "meaning": "Thường, giỏi"
+      },
+      {
+        "word": "よむ。",
+        "phonetic": "Yomu",
+        "meaning": "Đọc"
+      },
+      {
+        "word": "よぶ。",
+        "phonetic": "Yobu",
+        "meaning": "Gọi"
+      
+    }
   ]
 }
   ]
