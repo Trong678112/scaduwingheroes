@@ -6,7 +6,7 @@ import './HomePage.css';
 function HomePage() {
     return (
         <div className="hero-section">
-            <img class = "logo-h" src="../public/logo.jpg"></img>
+            <img class = "logo-h" src="/logo.jpg"></img>
             <h3 className="hero-title">Scaduwing Heroes Học Ngoại Ngữ Theo Cách Mới</h3>
             <p className="hero-subtitle">
                 Kết hợp thẻ bài vật lý và công nghệ tương tác để ghi nhớ từ vựng hiệu quả và thú vị hơn bao giờ hết.
