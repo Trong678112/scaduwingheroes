@@ -13,7 +13,7 @@ if (mic) {
 // Hàm tiện ích để chuyển đổi Katakana sang Hiragana
 const katakanaToHiragana = (str) => {
     if (!str) return '';
-    return str.replace(/[\u30a1-\u30f6]/g, function(match) {
+    return str.replace(/[\u30a1-\u30f6]/g, function (match) {
         const chr = match.charCodeAt(0) - 0x60;
         return String.fromCharCode(chr);
     });
@@ -38,7 +38,7 @@ function CardPage() {
 
         // Lấy từ gốc (Hiragana) và làm sạch
         const originalWord = wordObject.word.replace(/[.,!?。]/g, '').trim();
-        
+
         // Lấy từ Kanji (nếu có) và làm sạch
         const kanjiWord = wordObject.kanji ? wordObject.kanji.replace(/[.,!?。]/g, '').trim() : null;
 
@@ -86,7 +86,7 @@ function CardPage() {
             setTranscriptions(prev => ({ ...prev, [activeWordForRecording.word]: transcript }));
             checkPronunciation(activeWordForRecording, transcript);
         };
-        
+
         mic.onstart = () => setIsRecording(true);
         mic.onend = () => {
             setIsRecording(false);
@@ -142,6 +142,7 @@ function CardPage() {
     return (
         <div className="card-page-container">
             <div className="card-header">
+                <img className="logo-h" src="../public/logo.jpg" alt="Logo" />
                 <h1>{card.theme}</h1>
                 <p>Bộ thẻ: {card.language === 'english' ? 'Tiếng Anh' : 'Tiếng Nhật'}</p>
             </div>
@@ -165,14 +166,14 @@ function CardPage() {
                                 disabled={isRecording && activeWordForRecording?.word !== item.word}
                                 aria-label="Ghi âm và kiểm tra"
                             >
-                                 <img src="/Mic.jpg" alt="Ghi âm" className="button-icon" />
+                                <img src="/Mic.jpg" alt="Ghi âm" className="button-icon" />
                             </button>
                         </div>
 
                         {isRecording && activeWordForRecording?.word === item.word && (
                             <div className="recording-indicator">🎙️ Đang ghi âm...</div>
                         )}
-                        
+
                         {transcriptions[item.word] && (
                             <div className="transcript">Bạn đã nói: <strong>"{transcriptions[item.word]}"</strong></div>
                         )}
