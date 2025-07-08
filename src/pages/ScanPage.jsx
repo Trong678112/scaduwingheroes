@@ -8,7 +8,7 @@ function ScanPage() {
   useEffect(() => {
     let scanner;
 
-    function onScanSuccess(decodedText, decodedResult) {
+    function onScanSuccess(decodedText) {
       console.log(`Scan result: ${decodedText}`);
       
       // Dừng việc quét sau khi thành công
@@ -32,7 +32,7 @@ function ScanPage() {
       }
     }
 
-    function onScanError(errorMessage) {
+    function onScanError() {
       // Bỏ qua lỗi, không cần làm gì cả
     }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import './CardPage.css';
 
@@ -9,6 +9,15 @@ if (mic) {
     mic.continuous = false;
     mic.interimResults = false;
 }
+
+// Hàm tiện ích để chuyển đổi Katakana sang Hiragana
+const katakanaToHiragana = (str) => {
+    if (!str) return '';
+    return str.replace(/[\u30a1-\u30f6]/g, function(match) {
+        const chr = match.charCodeAt(0) - 0x60;
+        return String.fromCharCode(chr);
+    });
+};
 
 function CardPage() {
     const { cardId } = useParams();
@@ -21,9 +30,34 @@ function CardPage() {
     const [transcriptions, setTranscriptions] = useState({});
     const [feedbacks, setFeedbacks] = useState({});
 
+    // *** CẢI TIẾN LOGIC KIỂM TRA PHÁT ÂM ***
+    const checkPronunciation = useCallback((wordObject, transcript) => {
+        // Chuẩn hóa input từ người dùng: bỏ dấu câu, khoảng trắng và chuyển Katakana (nếu có) sang Hiragana
+        const cleanedTranscript = transcript.replace(/[.,!?。]/g, '').trim();
+        const userHiragana = katakanaToHiragana(cleanedTranscript);
+
+        // Lấy từ gốc (Hiragana) và làm sạch
+        const originalWord = wordObject.word.replace(/[.,!?。]/g, '').trim();
+        
+        // Lấy từ Kanji (nếu có) và làm sạch
+        const kanjiWord = wordObject.kanji ? wordObject.kanji.replace(/[.,!?。]/g, '').trim() : null;
+
+        // *** So sánh kết quả của người dùng với cả Hiragana và Kanji ***
+        if (originalWord === cleanedTranscript || (kanjiWord && kanjiWord === cleanedTranscript) || originalWord === userHiragana) {
+            setFeedbacks(prev => ({ ...prev, [wordObject.word]: '🎉 Chính xác!' }));
+        } else {
+            setFeedbacks(prev => ({ ...prev, [wordObject.word]: '🤔 Chưa đúng. Thử lại!' }));
+        }
+    }, []);
+
     useEffect(() => {
         fetch('/database.json')
-            .then((res) => res.json())
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                return res.json();
+            })
             .then((data) => {
                 const foundCard = data.cards.find((c) => c.id === cardId);
                 if (foundCard) {
@@ -37,7 +71,8 @@ function CardPage() {
                 setLoading(false);
             })
             .catch((err) => {
-                setError(err.message);
+                console.error("Lỗi khi tải dữ liệu thẻ:", err);
+                setError('Không thể tải được dữ liệu thẻ. Vui lòng kiểm tra lại đường dẫn hoặc tệp database.json.');
                 setLoading(false);
             });
     }, [cardId]);
@@ -45,54 +80,64 @@ function CardPage() {
     useEffect(() => {
         if (!mic) return;
 
+        const handleResult = (event) => {
+            if (!activeWordForRecording) return;
+            const transcript = event.results[0][0].transcript;
+            setTranscriptions(prev => ({ ...prev, [activeWordForRecording.word]: transcript }));
+            checkPronunciation(activeWordForRecording, transcript);
+        };
+        
         mic.onstart = () => setIsRecording(true);
         mic.onend = () => {
             setIsRecording(false);
             setActiveWordForRecording(null);
         };
-        mic.onerror = (event) => console.error('Speech recognition error', event.error);
-        mic.onresult = (event) => {
-            if (!activeWordForRecording) return;
+        mic.onerror = (event) => console.error('Lỗi nhận dạng giọng nói:', event.error);
+        mic.onresult = handleResult;
 
-            const transcript = event.results[0][0].transcript;
-            setTranscriptions(prev => ({ ...prev, [activeWordForRecording.word]: transcript }));
-            checkPronunciation(activeWordForRecording, transcript);
+        return () => {
+            mic.onstart = null;
+            mic.onend = null;
+            mic.onerror = null;
+            mic.onresult = null;
         };
+    }, [activeWordForRecording, checkPronunciation]);
 
-        const checkPronunciation = (wordObject, transcript) => {
-            const originalWord = wordObject.word.toLowerCase().trim();
-            const userWord = transcript.toLowerCase().trim().replace(/[.,!?]/g, '');
-
-            if (originalWord === userWord) {
-                setFeedbacks(prev => ({ ...prev, [wordObject.word]: '🎉 Chính xác!' }));
-            } else {
-                setFeedbacks(prev => ({ ...prev, [wordObject.word]: '🤔 Chưa đúng. Thử lại!' }));
-            }
-        };
-    }, [activeWordForRecording]);
-
-    const handleSpeak = (wordToSpeak) => {
-        if (!('speechSynthesis' in window)) return;
-        const utterance = new SpeechSynthesisUtterance(wordToSpeak);
+    const handleSpeak = (wordToSpeak, phonetic) => {
+        if (!('speechSynthesis' in window) || !card) return;
+        let textToSpeak = wordToSpeak;
+        if (card.language === 'japanese') {
+            // Ưu tiên phát âm theo trường phonetic (nếu có), hoặc chuyển Katakana sang Hiragana
+            textToSpeak = phonetic || katakanaToHiragana(wordToSpeak);
+        }
+        const utterance = new SpeechSynthesisUtterance(textToSpeak);
         utterance.lang = card.language === 'english' ? 'en-US' : 'ja-JP';
         utterance.rate = 0.9;
         window.speechSynthesis.speak(utterance);
     };
 
     const handleToggleRecording = (wordObject) => {
-        if (!mic) return;
+        if (!mic) {
+            alert("Trình duyệt không hỗ trợ nhận dạng giọng nói.");
+            return;
+        }
         if (isRecording) {
             mic.stop();
         } else {
             setTranscriptions(prev => ({ ...prev, [wordObject.word]: '' }));
             setFeedbacks(prev => ({ ...prev, [wordObject.word]: '' }));
             setActiveWordForRecording(wordObject);
-            mic.start();
+            try {
+                mic.start();
+            } catch (error) {
+                console.error("Lỗi khi bắt đầu ghi âm:", error);
+            }
         }
     };
 
     if (loading) return <div className="loading-container">Đang tải bộ thẻ...</div>;
     if (error) return <div className="error-container">{error}</div>;
+    if (!card) return <div className="error-container">Không có dữ liệu thẻ.</div>;
 
     return (
         <div className="card-page-container">
@@ -105,21 +150,22 @@ function CardPage() {
                     <div className="vocab-item" key={item.word}>
                         <div className="vocab-main">
                             <div className="vocab-text">
-                                <span className="vocab-word">{item.word}</span>
+                                <span className="vocab-word">{item.word}{item.kanji && ` (${item.kanji})`}</span>
                                 <span className="vocab-phonetic">{item.phonetic}</span>
                             </div>
                             <span className="vocab-meaning">{item.meaning}</span>
                         </div>
                         <div className="vocab-actions">
-                            <button onClick={() => handleSpeak(item.word)} className="speak-button">
-                                <img src="../public/Speaker.jpg" alt="Nghe phát âm" className="button-icon" />
+                            <button onClick={() => handleSpeak(item.word, item.phonetic)} className="speak-button" aria-label="Nghe phát âm">
+                                <img src="/Speaker.jpg" alt="Nghe phát âm" className="button-icon" />
                             </button>
                             <button
                                 onClick={() => handleToggleRecording(item)}
                                 className={`record-button ${isRecording && activeWordForRecording?.word === item.word ? 'recording' : ''}`}
                                 disabled={isRecording && activeWordForRecording?.word !== item.word}
+                                aria-label="Ghi âm và kiểm tra"
                             >
-                                <img src="../public/Mic.jpg" alt="Ghi âm" className="button-icon" />
+                                 <img src="/Mic.jpg" alt="Ghi âm" className="button-icon" />
                             </button>
                         </div>
 
