@@ -1,10 +1,32 @@
 /* src/pages/CardPage.css */
 
-.card-page-container {
-    width: 100%;
-    max-width: 800px;
-    /* Tăng chiều rộng để chứa danh sách */
-    margin: 0 auto;
+.card-page-container {  
+    width: 100%;  
+    max-width: 800px;  
+    margin: 0 auto;  
+    background-image: url('/images/background.jpg');  
+    background-size: cover;  
+    background-position: center;  
+    background-repeat: no-repeat;  
+    min-height: 100vh;  
+    padding: 2rem 1rem;  
+}  
+  
+/* Responsive cho mobile */  
+@media (max-width: 768px) {  
+    .card-page-container {  
+        padding: 1rem 0.5rem;  
+        background-size: contain;  
+        background-position: top center;  
+    }  
+}  
+  
+/* Responsive cho màn hình rất nhỏ */  
+@media (max-width: 480px) {  
+    .card-page-container {  
+        padding: 0.5rem 0.25rem;  
+        background-attachment: scroll;  
+    }  
 }
 
 .card-header {
@@ -171,4 +193,18 @@
         opacity: 1;
         transform: scale(1);
     }
+}
+.card-page-footer {  
+    text-align: center;  
+    margin-top: 3rem;  
+    padding: 2rem 0 1rem 0;  
+    border-top: 1px solid #e0e0e0;  
+    background-color: var(--surface-color);  
+    color: var(--text-color);  
+    font-size: 0.9rem;
+}  
+  
+.card-page-footer p {  
+    margin: 0;  
+    opacity: 0.8;  
 }

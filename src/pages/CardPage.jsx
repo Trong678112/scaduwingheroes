@@ -185,6 +185,10 @@ function CardPage() {
                     </div>
                 ))}
             </div>
+
+            <footer className="card-page-footer">
+                <p>&copy; {new Date().getFullYear()} T2N team. All rights reserved.</p>
+            </footer>
         </div>
     );
 }

@@ -7,7 +7,7 @@ function Header() {
     <header className="site-header">
       <div className="container">
         <Link to="/" className="logo">
-          🎓 Flashcard Pro
+          Scaduwing Heroes
         </Link>
         <nav className="main-nav">
           <NavLink to="/">Trang Chủ</NavLink>
