@@ -1,0 +1,18 @@
+{  
+  "libraryCards": [  
+    {  
+      "id": "lib-001",  
+      "title": "Thẻ Chiến Binh",  
+      "description": "Một chiến binh dũng mãnh với thanh kiếm sắc bén",  
+      "image": "/library-images/warrior.jpg",  
+      "rarity": "Rare"  
+    },  
+    {  
+      "id": "lib-002",   
+      "title": "Thẻ Pháp Sư",  
+      "description": "Pháp sư với sức mạnh ma thuật bí ẩn",  
+      "image": "/library-images/mage.jpg",  
+      "rarity": "Epic"  
+    }  
+  ]  
+}
