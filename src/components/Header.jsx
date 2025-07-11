@@ -9,10 +9,11 @@ function Header() {
         <Link to="/" className="logo">
           Scaduwing Heroes
         </Link>
-        <nav className="main-nav">
-          <NavLink to="/">Trang Chủ</NavLink>
-          <NavLink to="/scan">📷 Quét Mã</NavLink>
-        </nav>
+        <nav className="main-nav">  
+  <NavLink to="/">Trang Chủ</NavLink>  
+  <NavLink to="/scan">📷 Quét Mã</NavLink>  
+  <NavLink to="/library">📚 Thư Viện</NavLink>  
+</nav>
       </div>
     </header>
   );

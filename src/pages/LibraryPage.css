@@ -1,26 +1,45 @@
+/* src/pages/LibraryPage.css */  
 .library-page {  
     max-width: 1200px;  
     margin: 0 auto;  
-    padding: 20px;  
+    padding: 2rem;  
 }  
   
-.library-grid {  
+.library-header {  
+    text-align: center;  
+    margin-bottom: 3rem;  
+}  
+  
+.library-header h2 {  
+    color: var(--primary-color);  
+    font-size: 2.5rem;  
+    margin-bottom: 0.5rem;  
+}  
+  
+.library-header p {  
+    color: var(--text-light-color);  
+    font-size: 1.1rem;  
+}  
+  
+.card-grid {  
     display: grid;  
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  
-    gap: 20px;  
-    margin-top: 20px;  
+    gap: 2rem;  
+    margin-bottom: 2rem;  
 }  
   
 .library-card {  
-    background: white;  
-    border-radius: 12px;  
+    background: var(--surface-color);  
+    border-radius: var(--border-radius);  
+    box-shadow: var(--box-shadow);  
     overflow: hidden;  
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);  
-    transition: transform 0.2s ease;  
+    cursor: pointer;  
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  
 }  
   
 .library-card:hover {  
     transform: translateY(-5px);  
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);  
 }  
   
 .library-card img {  
@@ -30,9 +49,81 @@
 }  
   
 .card-info {  
-    padding: 15px;  
+    padding: 1.5rem;  
 }  
   
-.rarity.rare { color: #3498db; }  
-.rarity.epic { color: #9b59b6; }  
-.rarity.legendary { color: #f39c12; }
+.card-info h3 {  
+    color: var(--text-color);  
+    margin-bottom: 0.5rem;  
+    font-size: 1.2rem;  
+}  
+  
+.card-info p {  
+    color: var(--text-light-color);  
+    font-size: 0.9rem;  
+}  
+  
+/* Modal styles */  
+.modal-overlay {  
+    position: fixed;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    bottom: 0;  
+    background: rgba(0, 0, 0, 0.8);  
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    z-index: 1000;  
+}  
+  
+.modal-content {  
+    background: var(--surface-color);  
+    border-radius: var(--border-radius);  
+    max-width: 90vw;  
+    max-height: 90vh;  
+    position: relative;  
+    overflow: hidden;  
+}  
+  
+.modal-content img {  
+    width: 100%;  
+    max-width: 600px;  
+    height: auto;  
+    display: block;  
+}  
+  
+.modal-info {  
+    padding: 1.5rem;  
+    text-align: center;  
+}  
+  
+.modal-info h3 {  
+    color: var(--primary-color);  
+    margin-bottom: 0.5rem;  
+}  
+  
+.modal-info p {  
+    color: var(--text-light-color);  
+}  
+  
+.close-button {  
+    position: absolute;  
+    top: 1rem;  
+    right: 1rem;  
+    background: var(--error-color);  
+    color: white;  
+    border: none;  
+    border-radius: 50%;  
+    width: 40px;  
+    height: 40px;  
+    font-size: 1.5rem;  
+    cursor: pointer;  
+    display: flex;  
+    align-items: center;  
+    justify-content: center;  
+}  
+  
+.close-button:hover {  
+    background: #c0392b;  
+}

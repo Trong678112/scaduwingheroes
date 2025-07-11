@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage';
 import CardPage from './pages/CardPage';  
 import ScanPage from './pages/ScanPage';  
 import './App.css';  
-  
+import LibraryPage from './pages/LibraryPage';  
 function App() {  
   const location = useLocation();  
   const showHeader = !location.pathname.startsWith('/card/');  
@@ -17,7 +17,8 @@ function App() {
       <Routes>  
         <Route path="/" element={<HomePage />} />  
         <Route path="/scan" element={<ScanPage />} />  
-        <Route path="/card/:cardId" element={<CardPage />} />  
+        <Route path="/card/:cardId" element={<CardPage />} />
+        <Route path="/library" element={<LibraryPage />} />
       </Routes>  
       <Footer />  
     </div>  

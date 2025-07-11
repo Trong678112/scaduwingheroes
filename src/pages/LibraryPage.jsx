@@ -1,42 +1,65 @@
-import React, { useState, useEffect } from 'react';  
+// src/pages/LibraryPage.jsx  
+import React, { useState } from 'react';  
 import './LibraryPage.css';  
   
 function LibraryPage() {  
-    const [libraryCards, setLibraryCards] = useState([]);  
-    const [loading, setLoading] = useState(true);  
+    const [selectedCard, setSelectedCard] = useState(null);  
+      
+    // Tạo động 12 thẻ bài từ lib-001 đến lib-012  
+    const cardLibrary = Array.from({ length: 12 }, (_, index) => {  
+        const cardNumber = String(index + 1).padStart(3, '0');  
+        return {  
+            id: `lib-${cardNumber}`,  
+            title: `Thẻ Bài ${cardNumber}`,  
+            image: `/image/cards/lib-${cardNumber}.jpg`,  
+            description: `Thẻ bài học tập số ${index + 1}`  
+        };  
+    });  
   
-    useEffect(() => {  
-        fetch('/library-cards.json')  
-            .then(res => res.json())  
-            .then(data => {  
-                setLibraryCards(data.libraryCards);  
-                setLoading(false);  
-            })  
-            .catch(error => {  
-                console.error('Error loading library cards:', error);  
-                setLoading(false);  
-            });  
-    }, []);  
+    const handleCardClick = (card) => {  
+        setSelectedCard(card);  
+    };  
   
-    if (loading) return <div>Đang tải thư viện...</div>;  
+    const closeModal = () => {  
+        setSelectedCard(null);  
+    };  
   
     return (  
         <div className="library-page">  
-            <h1>Thư viện thẻ bài</h1>  
-            <div className="library-grid">  
-                {libraryCards.map(card => (  
-                    <div key={card.id} className="library-card">  
+            <div className="library-header">  
+                <h2>Thư Viện Thẻ Bài</h2>  
+                <p>Bộ sưu tập 12 thẻ bài học tập</p>  
+            </div>  
+              
+            <div className="card-grid">  
+                {cardLibrary.map(card => (  
+                    <div   
+                        key={card.id}  
+                        className="library-card"  
+                        onClick={() => handleCardClick(card)}  
+                    >  
                         <img src={card.image} alt={card.title} />  
                         <div className="card-info">  
                             <h3>{card.title}</h3>  
                             <p>{card.description}</p>  
-                            <span className={`rarity ${card.rarity.toLowerCase()}`}>  
-                                {card.rarity}  
-                            </span>  
                         </div>  
                     </div>  
                 ))}  
             </div>  
+  
+            {/* Modal hiển thị ảnh lớn ở giữa màn hình */}  
+            {selectedCard && (  
+                <div className="modal-overlay" onClick={closeModal}>  
+                    <div className="modal-content" onClick={e => e.stopPropagation()}>  
+                        <button className="close-button" onClick={closeModal}>×</button>  
+                        <img src={selectedCard.image} alt={selectedCard.title} />  
+                        <div className="modal-info">  
+                            <h3>{selectedCard.title}</h3>  
+                            <p>{selectedCard.description}</p>  
+                        </div>  
+                    </div>  
+                </div>  
+            )}  
         </div>  
     );  
 }  
