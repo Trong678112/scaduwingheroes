@@ -11,7 +11,7 @@ function LibraryPage() {
         return {  
             id: `lib-${cardNumber}`,  
             title: `Thẻ Bài ${cardNumber}`,  
-            image: `/public/images/cards/lib-${cardNumber}.jpg`,  
+            image: `/images/cards/lib-${cardNumber}.jpg`,  
             description: `Thẻ bài học tập số ${index + 1}`  
         };  
     });  
