@@ -339,7 +339,7 @@
   
 /* Loading state */  
 .pdf-container::before {  
-    content: 'Đang tải PDF...';  
+    content: 'Đang tải Sách Hướng Dẫn...';  
     position: absolute;  
     top: 50%;  
     left: 50%;  
