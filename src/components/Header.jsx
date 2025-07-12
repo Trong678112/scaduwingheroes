@@ -19,24 +19,32 @@ function Header() {
     }  
   };  
   
+  const toggleMobileMenu = () => {  
+    setIsMenuOpen(!isMenuOpen);  
+  };  
+  
+  const closeMobileMenu = () => {  
+    setIsMenuOpen(false);  
+  };  
+  
   return (  
     <header className="site-header">  
       <div className="container">  
         <Link to="/" className="logo">  
           Scaduwing Heroes  
         </Link>  
-          
+  
         {/* Music Player Icon */}  
-        <button   
+        <button  
           className={`music-toggle ${isPlaying ? 'spinning' : ''}`}  
           onClick={handleMusicToggle}  
           aria-label="Toggle background music"  
         >  
           🎵  
         </button>  
-          
+  
         {/* Hidden Audio Element */}  
-        <audio   
+        <audio  
           ref={audioRef}  
           loop  
           onEnded={() => setIsPlaying(false)}  
@@ -45,11 +53,11 @@ function Header() {
           <source src="/music/theme-song.ogg" type="audio/ogg" />  
           Trình duyệt không hỗ trợ audio.  
         </audio>  
-          
-        {/* Hamburger Button */}  
-        <button   
-          className="mobile-menu-toggle"  
-          onClick={() => setIsMenuOpen(!isMenuOpen)}  
+  
+        {/* Hamburger Button - Hiển thị trên tất cả thiết bị */}  
+        <button  
+          className={`mobile-menu-toggle ${isMenuOpen ? 'open' : ''}`}  
+          onClick={toggleMobileMenu}  
           aria-label="Toggle menu"  
         >  
           <span></span>  
@@ -57,12 +65,25 @@ function Header() {
           <span></span>  
         </button>  
   
-        {/* Navigation Menu */}  
-        <nav className={`main-nav mobile-nav ${isMenuOpen ? 'open' : ''}`}>    
-          <NavLink to="/" onClick={() => setIsMenuOpen(false)}>Trang Chủ</NavLink>    
-          <NavLink to="/scan" onClick={() => setIsMenuOpen(false)}>📷 Quét Mã</NavLink>    
-          <NavLink to="/library" onClick={() => setIsMenuOpen(false)}>📚 Thư Viện</NavLink>    
+        {/* Mobile Navigation Menu */}  
+        <nav className={`mobile-nav ${isMenuOpen ? 'open' : ''}`}>  
+          <button className="mobile-nav-close" onClick={closeMobileMenu}>  
+            ×  
+          </button>  
+          <div className="mobile-nav-header">  
+            <h3>Scaduwing Heroes</h3>  
+          </div>  
+          <NavLink to="/" onClick={closeMobileMenu}>Trang Chủ</NavLink>  
+          <NavLink to="/scan" onClick={closeMobileMenu}>📷 Quét Mã</NavLink>  
+          <NavLink to="/library" onClick={closeMobileMenu}>📚 Thư Viện</NavLink>  
+          <NavLink to="/guide" onClick={closeMobileMenu}>📖 Hướng dẫn cách chơi</NavLink>  
         </nav>  
+  
+        {/* Overlay */}  
+        <div  
+          className={`mobile-nav-overlay ${isMenuOpen ? 'open' : ''}`}  
+          onClick={closeMobileMenu}  
+        ></div>  
       </div>  
     </header>  
   );  

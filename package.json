@@ -12,8 +12,10 @@
   "dependencies": {
     "html5-qrcode": "^2.3.8",
     "kuromoji": "^0.1.2",
+    "pdfjs-dist": "^5.3.93",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-pdf": "^7.7.1",
     "react-router-dom": "^7.6.3",
     "wanakana": "^5.3.1"
   },
