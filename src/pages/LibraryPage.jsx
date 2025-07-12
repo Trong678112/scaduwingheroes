@@ -28,7 +28,7 @@ function LibraryPage() {
         <div className="library-page">  
             <div className="library-header">  
                 <h2>Thư Viện Thẻ Bài</h2>  
-                <p>Bộ sưu tập 12 thẻ bài học tập</p>  
+                <p>Thư viện thẻ bài lưu trữ</p>  
             </div>  
               
             <div className="card-grid">  
