@@ -337,13 +337,3 @@
     outline-offset: -2px;  
 }  
   
-/* Loading state */  
-.pdf-container::before {  
-    content: 'Đang tải Sách Hướng Dẫn...';  
-    position: absolute;  
-    top: 50%;  
-    left: 50%;  
-    transform: translate(-50%, -50 )
-  
-
-}
