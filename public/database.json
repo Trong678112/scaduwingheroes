@@ -1,31 +1,31 @@
 {
   "cards": [
     {
-      "id": "en-001",
-      "language": "english",
-      "theme": "Chào hỏi cơ bản",
-      "vocabulary": [
-        {
-          "word": "Hello",
-          "phonetic": "/həˈloʊ/",
-          "meaning": "Xin chào"
-        },
-        {
-          "word": "Goodbye",
-          "phonetic": "/ɡʊdˈbaɪ/",
-          "meaning": "Tạm biệt"
-        },
-        {
-          "word": "Thank you",
-          "phonetic": "/θæŋk juː/",
-          "meaning": "Cảm ơn"
-        },
-        {
-          "word": "Sorry",
-          "phonetic": "/ˈsɒri/",
-          "meaning": "Xin lỗi"
-        }
-      ]
+     "id": "en-001",
+"language": "english",
+"theme": "Từ vựng phổ biến",
+"vocabulary": [
+  {
+    "word": "Pen",
+    "phonetic": "/pen/",
+    "meaning": "Bút"
+  },
+  {
+    "word": "Meeting",
+    "phonetic": "/ˈmiːtɪŋ/",
+    "meaning": "Cuộc họp"
+  },
+  {
+    "word": "Fluency",
+    "phonetic": "/ˈfluːənsi/",
+    "meaning": "Sự trôi chảy (trong ngôn ngữ)"
+  },
+  {
+    "word": "Language",
+    "phonetic": "/ˈlæŋɡwɪdʒ/",
+    "meaning": "Ngôn ngữ"
+  }
+]
     },
     {
       "id": "en-002",
