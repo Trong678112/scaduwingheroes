@@ -1,63 +1,126 @@
-/* src/pages/HomePage.css */    
-.hero-section {    
-  text-align: center;    
-  padding: 6rem 1rem;    
-  display: flex;    
-  flex-direction: column;    
-  align-items: center;    
-  justify-content: center;    
-}    
+/* src/pages/HomePage.css */  
+.hero-section {  
+  text-align: center;  
+  padding: 4rem 1rem;  
+  display: flex;  
+  flex-direction: column;  
+  align-items: center;  
+  justify-content: center;  
+  min-height: 100vh;  
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);  
+  position: relative;  
+  overflow: hidden;  
+}  
   
-.hero-title {    
-  font-size: 2.5rem;    
-  font-weight: 900;    
-  margin-bottom: 1rem;    
-  max-width: 700px;    
-}    
+/* Background image mờ fantasy */  
+.hero-section::before {  
+  content: '';  
+  position: absolute;  
+  top: 0;  
+  left: 0;  
+  right: 0;  
+  bottom: 0;  
+  background-image: url('/images/fantasy-bg.jpg');  
+  background-size: cover;  
+  background-position: center;  
+  background-repeat: no-repeat;  
+  opacity: 0.25;  
+  z-index: 0;  
+  filter: grayscale(100%) contrast(1.2);  
+}  
   
-.hero-subtitle {    
-  font-size: 1.25rem;    
-  color: var(--text-light-color);    
-  max-width: 600px;    
-  margin-bottom: 2.5rem;    
-}    
+/* Overlay để tăng độ mờ */  
+.hero-section::after {  
+  content: '';  
+  position: absolute;  
+  top: 0;  
+  left: 0;  
+  right: 0;  
+  bottom: 0;  
+  background: rgba(255, 255, 255, 0.6);  
+  z-index: 1;  
+}  
   
-.hero-buttons {    
-  display: flex;    
-  gap: 15px;    
-  justify-content: center;    
-  flex-wrap: wrap;    
-}    
+/* Logo hình tròn tự nhiên - không border, không shadow */  
+.Logo-h {  
+  width: 200px;  
+  height: 200px;  
+  border-radius: 50%;  
+  border: none;  
+  box-shadow: none;  
+  margin-bottom: 2rem;  
+  margin-top: 1rem;  
+  z-index: 2;  
+  position: relative;  
+  object-fit: contain; /* Thay đổi từ cover thành contain */  
+  background: rgb(255, 255, 255); /* Thêm background nếu cần */  
+}
+.hero-title {  
+  font-size: 2.5rem;  
+  font-weight: 900;  
+  margin-bottom: 1rem;  
+  max-width: 700px;  
+  color: #333333;  
+  z-index: 2;  
+  position: relative;  
+}  
   
-.hero-cta-button {    
-  background-color: black;    
-  color: white;    
-  font-size: 1.2rem;    
-  font-weight: 700;    
-  padding: 1rem 2.5rem;    
-  border-radius: 50px;    
-  text-decoration: none;    
-  transition: transform 0.2s ease, box-shadow 0.2s ease;    
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);    
-}    
+.hero-subtitle {  
+  font-size: 1.25rem;  
+  color: #666666;  
+  max-width: 600px;  
+  margin-bottom: 2.5rem;  
+  line-height: 1.6;  
+  z-index: 2;  
+  position: relative;  
+}  
   
-.hero-cta-button:hover {    
-  transform: translateY(-3px);    
-  box-shadow: 0 8px 25px rgba(74, 144, 226, 0.5);    
-}    
+.hero-buttons {  
+  display: flex;  
+  gap: 20px;  
+  justify-content: center;  
+  flex-wrap: wrap;  
+  z-index: 2;  
+  position: relative;  
+}  
   
-/* TikTok Chat Widget - Nằm trên Facebook */  
+.hero-cta-button {  
+  background: #4a90e2;  
+  color: white;  
+  font-size: 1.2rem;  
+  font-weight: 700;  
+  padding: 1.2rem 3rem;  
+  border-radius: 50px;  
+  text-decoration: none;  
+  transition: all 0.3s ease;  
+  border: 2px solid #4a90e2;  
+  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);  
+}  
+  
+.hero-cta-button:hover {  
+  transform: translateY(-3px);  
+  background: #357abd;  
+  border-color: #357abd;  
+  box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);  
+}  
+  
+.hero-cta-button:active {  
+  transform: translateY(-1px);  
+  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);  
+}  
+  
+/* TikTok Chat Widget */  
 .tiktok-chat-widget {  
     position: fixed;  
-    bottom: 90px; /* Cao hơn Facebook widget */  
+    bottom: 90px;  
     right: 20px;  
-    z-index: 1001; /* Z-index cao hơn Facebook */  
+    z-index: 1001;  
 }  
   
 .tiktok-chat-button {  
     width: 60px;  
     height: 60px;  
-    background: #000000; /* Màu đen của TikTok */  
+    background: #000000;  
     border-radius: 50%;  
     display: flex;  
     align-items: center;  
@@ -128,10 +191,10 @@
     background: #333333;  
 }  
   
-/* Facebook Chat Widget - Nằm dưới TikTok */  
+/* Facebook Chat Widget */  
 .facebook-chat-widget {  
     position: fixed;  
-    bottom: 20px; /* Thấp hơn TikTok widget */  
+    bottom: 20px;  
     right: 20px;  
     z-index: 1000;  
 }  
@@ -273,6 +336,7 @@
     }  
 }  
   
+/* Responsive Design */  
 @media (max-width: 768px) {  
     .hero-buttons {  
         flex-direction: column;  
@@ -281,8 +345,22 @@
       
     .hero-cta-button {  
         width: 100%;  
-        max-width: 250px;  
+        max-width: 280px;  
         text-align: center;  
+        padding: 1rem 2rem;  
+    }  
+      
+    .logo-h {  
+        width: 100px;  
+        height: 100px;  
+    }  
+      
+    .hero-title {  
+        font-size: 2rem;  
+    }  
+      
+    .hero-subtitle {  
+        font-size: 1.1rem;  
     }  
       
     .tiktok-chat-widget {  
@@ -303,5 +381,16 @@
     .fb-chat-popup {  
         width: 300px;  
         right: -10px;  
+    }  
+}  
+  
+@media (max-width: 480px) {  
+    .hero-title {  
+        font-size: 1.8rem;  
+    }  
+      
+    .hero-cta-button {  
+        font-size: 1.1rem;  
+        padding: 0.9rem 1.8rem;  
     }  
 }

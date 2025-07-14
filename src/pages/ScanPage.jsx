@@ -1,84 +1,161 @@
-import React, { useEffect } from 'react';  
+// src/pages/ScanPage.jsx  
+import React, { useEffect, useState } from 'react';  
 import { useNavigate } from 'react-router-dom';  
 import { Html5QrcodeScanner } from 'html5-qrcode';  
 import './ScanPage.css';  
   
 function ScanPage() {  
-  const navigate = useNavigate();  
+    const navigate = useNavigate();  
+    const [isScanning, setIsScanning] = useState(false);  
+    const [scanStatus, setScanStatus] = useState('');  
   
-  useEffect(() => {  
-    let scanner;  
+    useEffect(() => {  
+        let scanner;  
+        setIsScanning(true);  
+        setScanStatus('Đang khởi tạo camera...');  
   
-    function onScanSuccess(decodedText) {  
-      console.log(`Scan result: ${decodedText}`);  
-        
-      // Dừng việc quét sau khi thành công  
-      scanner.clear();  
+        function onScanSuccess(decodedText) {  
+            console.log(`Kết quả quét: ${decodedText}`);  
+            setScanStatus('Quét thành công! Đang chuyển hướng...');  
+              
+            // Dừng việc quét sau khi thành công  
+            scanner.clear();  
+            setIsScanning(false);  
   
-      try {  
-        // decodedText là URL đầy đủ, ví dụ: "http://localhost:5173/card/en-002"  
-        const url = new URL(decodedText);  
-        // Lấy phần đường dẫn của URL, ví dụ: "/card/en-002"  
-        const path = url.pathname;  
+            try {  
+                const url = new URL(decodedText);  
+                const path = url.pathname;  
   
-        // Kiểm tra xem có phải là đường dẫn thẻ bài hợp lệ không  
-        if (path.startsWith('/card/')) {  
-          navigate(path); // Chuyển hướng đến trang thẻ bài  
-        } else {  
-            alert('Mã QR không hợp lệ!');  
+                if (path.startsWith('/card/')) {  
+                    navigate(path);  
+                } else {  
+                    setScanStatus('Mã QR không hợp lệ!');  
+                    setTimeout(() => {  
+                        setScanStatus('Sẵn sàng quét mã QR');  
+                        restartScanner();  
+                    }, 2000);  
+                }  
+            } catch (error) {  
+                console.error("URL không hợp lệ trong mã QR", error);  
+                setScanStatus('Mã QR không chứa URL hợp lệ!');  
+                setTimeout(() => {  
+                    setScanStatus('Sẵn sàng quét mã QR');  
+                    restartScanner();  
+                }, 2000);  
+            }  
         }  
-      } catch (error) {  
-        console.error("Invalid URL in QR Code", error);  
-        alert('Mã QR không chứa một URL hợp lệ!');  
-      }  
-    }  
   
-    function onScanError() {  
-      // Bỏ qua lỗi, không cần làm gì cả  
-    }  
+        function onScanError() {  
+            // Bỏ qua lỗi quét thông thường  
+        }  
   
-    // Khởi tạo máy quét với camera constraints  
-    scanner = new Html5QrcodeScanner(  
-      'qr-reader',  
-      {   
-        fps: 10,  
-        qrbox: { width: 250, height: 250 },  
-        // Cấu hình camera tự động - ưu tiên camera sau trên mobile  
-        videoConstraints: {  
-          facingMode: { ideal: "environment" }  
-        },  
-        // Tắt camera selection UI  
-        showTorchButtonIfSupported: true,  
-        showZoomSliderIfSupported: false,  
-        defaultZoomValueIfSupported: 2  
-      },  
-      false // verbose = false  
-    );  
+        function restartScanner() {  
+            if (scanner) {  
+                scanner.clear().then(() => {  
+                    initScanner();  
+                });  
+            } else {  
+                initScanner();  
+            }  
+        }  
   
-    // Bắt đầu render máy quét  
-    scanner.render(onScanSuccess, onScanError);  
+        function initScanner() {  
+            scanner = new Html5QrcodeScanner(  
+                'qr-reader',  
+                {  
+                    fps: 10,  
+                    qrbox: { width: 280, height: 280 }, // Tăng kích thước khung quét  
+                    videoConstraints: {  
+                        facingMode: { ideal: "environment" } // Camera sau  
+                    },  
+                    showTorchButtonIfSupported: true,  
+                    showZoomSliderIfSupported: false,  
+                    defaultZoomValueIfSupported: 2,  
+                    rememberLastUsedCamera: true  
+                },  
+                false  
+            );  
   
-    // Hàm dọn dẹp: sẽ chạy khi component bị hủy (rời khỏi trang)  
-    return () => {  
-      if (scanner) {  
-        scanner.clear().catch(error => {  
-          console.error("Failed to clear html5-qrcode-scanner.", error);  
-        });  
-      }  
+            scanner.render(onScanSuccess, onScanError);  
+            setScanStatus('Sẵn sàng quét mã QR');  
+        }  
+  
+        initScanner();  
+  
+        return () => {  
+            if (scanner) {  
+                scanner.clear().catch(error => {  
+                    console.error("Lỗi khi dọn dẹp scanner.", error);  
+                });  
+            }  
+        };  
+    }, [navigate]);  
+  
+    const handleManualRestart = () => {  
+        setScanStatus('Đang khởi động lại camera...');  
+        setIsScanning(true);  
+        window.location.reload(); // Restart toàn bộ component  
     };  
-  }, [navigate]);  
   
-  return (  
-    <div className="scan-page-container">  
-      <div className="scan-header">  
-        <h1 className="scan-title">Quét Mã QR</h1>  
-        <p className="scan-subtitle">Đặt mã QR của thẻ vào trong khung hình</p>  
-      </div>  
-      <div className="qr-scanner-wrapper">  
-        <div id="qr-reader"></div>  
-      </div>  
-    </div>  
-  );  
+    return (  
+        <div className="scan-page-container">  
+            <div className="scan-header">  
+                <h1 className="scan-title">📱 Quét Mã QR</h1>  
+                <p className="scan-subtitle">Đặt mã QR của thẻ bài vào trong khung vuông bên dưới</p>  
+                <div className="scan-status">  
+                    <span className={`status-text ${isScanning ? 'scanning' : 'ready'}`}>  
+                        {scanStatus}  
+                    </span>  
+                </div>  
+            </div>  
+  
+            <div className="qr-scanner-wrapper">  
+                <div className="scanner-frame">  
+                    <div id="qr-reader"></div>  
+                    <div className="scanner-overlay">  
+                        <div className="scan-corners">  
+                            <div className="corner top-left"></div>  
+                            <div className="corner top-right"></div>  
+                            <div className="corner bottom-left"></div>  
+                            <div className="corner bottom-right"></div>  
+                        </div>  
+                    </div>  
+                </div>  
+            </div>  
+  
+            <div className="scan-controls">  
+                <button   
+                    className="control-button restart-btn"  
+                    onClick={handleManualRestart}  
+                    title="Khởi động lại camera"  
+                >  
+                    🔄 Khởi động lại  
+                </button>  
+                <button   
+                    className="control-button back-btn"  
+                    onClick={() => navigate('/')}  
+                    title="Quay về trang chủ"  
+                >  
+                    🏠 Trang chủ  
+                </button>  
+            </div>  
+  
+            <div className="scan-instructions">  
+                <div className="instruction-item">  
+                    <span className="instruction-icon">📷</span>  
+                    <span>Cho phép truy cập camera khi được yêu cầu</span>  
+                </div>  
+                <div className="instruction-item">  
+                    <span className="instruction-icon">🎯</span>  
+                    <span>Đặt mã QR vào giữa khung vuông</span>  
+                </div>  
+                <div className="instruction-item">  
+                    <span className="instruction-icon">💡</span>  
+                    <span>Đảm bảo ánh sáng đủ và mã QR rõ nét</span>  
+                </div>  
+            </div>  
+        </div>  
+    );  
 }  
   
 export default ScanPage;
