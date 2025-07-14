@@ -1,40 +1,210 @@
-/* React PDF specific styles */  
-.react-pdf__Document {  
+/* src/pages/CardPage.css */  
+  
+.card-page-container {    
+    width: 100%;    
+    max-width: 800px;    
+    margin: 0 auto;    
+    background-image: url('/images/background.jpg');    
+    background-size: cover;    
+    background-position: center;    
+    background-repeat: no-repeat;    
+    min-height: 100vh;    
+    padding: 2rem 1rem;    
+}    
+    
+/* Responsive cho mobile */    
+@media (max-width: 768px) {    
+    .card-page-container {    
+        background-size: cover;    
+        background-attachment: scroll; /* Tốt hơn cho mobile */    
+    }    
+}  
+    
+/* Responsive cho màn hình rất nhỏ */    
+@media (max-width: 480px) {    
+    .card-page-container {    
+        padding: 0.5rem 0.25rem;    
+        background-attachment: scroll;    
+    }    
+}  
+  
+.card-header {  
+    text-align: center;  
+    margin-bottom: 2rem;  
+    padding-bottom: 1.5rem;  
+    border-bottom: 2px solid var(--primary-color);  
+}  
+  
+.card-header h1 {  
+    font-size: 2.5rem;  
+    font-weight: 900;  
+}  
+  
+.card-header p {  
+    font-size: 1.2rem;  
+    color: var(--text-light-color);  
+}  
+  
+.vocab-list {  
     display: flex;  
     flex-direction: column;  
+    gap: 1.5rem;  
+}  
+  
+.vocab-item {  
+    background-color: var(--surface-color);  
+    border-radius: var(--border-radius);  
+    box-shadow: var(--box-shadow);  
+    padding: 1.5rem 2rem;  
+    transition: transform 0.2s ease, box-shadow 0.2s ease;  
+}  
+  
+.vocab-item:hover {  
+    transform: translateY(-4px);  
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);  
+}  
+  
+.vocab-main {  
+    display: flex; /* ĐÃ SỬA: Bỏ comment để enable flexbox */  
+    justify-content: space-between;  
+    align-items: center;  
+    flex-wrap: wrap;  
+    gap: 1rem;  
+}  
+  
+.vocab-text {  
+    display: flex;  
+    flex-direction: column;  
+}  
+  
+.vocab-word {  
+    font-size: 2rem;  
+    font-weight: 900;  
+    color: var(--primary-color);  
+}  
+  
+.vocab-phonetic {  
+    font-size: 1.1rem;  
+    color: var(--text-light-color);  
+    font-style: italic;  
+}  
+  
+.vocab-meaning {  
+    font-size: 1.25rem;  
+    font-weight: 700;  
+    text-align: right;  
+}  
+  
+.vocab-actions {  
+    display: flex;  
+    gap: 1rem;  
+    margin-top: 1rem;  
+    padding-top: 1rem;  
+    border-top: 1px solid #f0f0f0;  
+}  
+  
+.speak-button,  
+.record-button {  
+    padding: 8px 18px;  
+    /* Giảm kích thước nút một chút */  
+}  
+  
+.record-button:disabled {  
+    background-color: #bdc3c7;  
+    cursor: not-allowed;  
+}  
+  
+/* Giữ nguyên các style cho transcript và feedback */  
+.transcript {  
+    margin-top: 1rem;  
+    font-size: 1.1rem;  
+    background-color: #f8f9fa;  
+    padding: 10px;  
+    border-radius: 8px;  
+}  
+  
+.feedback {  
+    margin-top: 10px;  
+    font-size: 1.2rem;  
+    font-weight: bold;  
+    padding: 10px;  
+    border-radius: 8px;  
+}  
+  
+.feedback.correct {  
+    color: var(--success-color);  
+    background-color: rgba(39, 174, 96, 0.1);  
+}  
+  
+.feedback.incorrect {  
+    color: var(--error-color);  
+    background-color: rgba(231, 76, 60, 0.1);  
+}  
+  
+.button-icon {  
+    width: 24px;  
+    height: 24px;  
+    vertical-align: middle;  
+    margin-right: 5px;  
+}  
+  
+.speak-button {  
+    background-color: white;  
+    border-radius: 5px;  
+    padding: 8px !important;  
+    width: 40px;  
+    height: 40px;  
+    display: flex;  
+    justify-content: center;  
     align-items: center;  
 }  
   
-.react-pdf__Page {  
-    max-width: 100%;  
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
-    margin-bottom: 1rem;  
+.record-button {  
+    background-color: white;  
+    border-radius: 5px;  
+    padding: 8px !important;  
+    width: 40px;  
+    height: 40px;  
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
 }  
   
-.react-pdf__Page__canvas {  
-    max-width: 100%;  
-    height: auto !important;  
+.recording-indicator {  
+    margin-top: 0.75rem;  
+    font-size: 1.1rem;  
+    font-weight: bold;  
+    color: #e74c3c;  
+    animation: pulse 1.2s infinite;  
+    text-align: left;  
 }  
   
-.loading-message, .error-message {  
-    padding: 20px;  
-    text-align: center;  
-    font-size: 16px;  
-}  
-  
-.error-message {  
-    color: #d32f2f;  
-}  
-  
-/* Mobile optimizations */  
-@media (max-width: 768px) {  
-    .react-pdf__Page {  
-        margin: 0;  
+@keyframes pulse {  
+    0% {  
+        opacity: 1;  
+        transform: scale(1);  
     }  
-      
-    .pdf-container {  
-        padding: 0;  
-        border-radius: 0;  
-        box-shadow: none;  
+    50% {  
+        opacity: 0.6;  
+        transform: scale(1.05);  
     }  
+    100% {  
+        opacity: 1;  
+        transform: scale(1);  
+    }  
+}  
+  
+.card-page-footer {    
+    text-align: center;    
+    margin-top: 3rem;    
+    padding: 2rem 0 1rem 0;    
+    border-top: 1px solid #e0e0e0;    
+    background-color: var(--surface-color);    
+    color: var(--text-color);    
+    font-size: 0.9rem;  
+}    
+    
+.card-page-footer p {    
+    margin: 0;    
+    opacity: 0.8;    
 }
