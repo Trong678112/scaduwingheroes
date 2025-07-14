@@ -1,60 +1,307 @@
-/* src/pages/HomePage.css */  
-.hero-section {  
-  text-align: center;  
-  padding: 6rem 1rem;  
-  display: flex;  
-  flex-direction: column;  
-  align-items: center;  
-  justify-content: center;  
+/* src/pages/HomePage.css */    
+.hero-section {    
+  text-align: center;    
+  padding: 6rem 1rem;    
+  display: flex;    
+  flex-direction: column;    
+  align-items: center;    
+  justify-content: center;    
+}    
+  
+.hero-title {    
+  font-size: 2.5rem;    
+  font-weight: 900;    
+  margin-bottom: 1rem;    
+  max-width: 700px;    
+}    
+  
+.hero-subtitle {    
+  font-size: 1.25rem;    
+  color: var(--text-light-color);    
+  max-width: 600px;    
+  margin-bottom: 2.5rem;    
+}    
+  
+.hero-buttons {    
+  display: flex;    
+  gap: 15px;    
+  justify-content: center;    
+  flex-wrap: wrap;    
+}    
+  
+.hero-cta-button {    
+  background-color: black;    
+  color: white;    
+  font-size: 1.2rem;    
+  font-weight: 700;    
+  padding: 1rem 2.5rem;    
+  border-radius: 50px;    
+  text-decoration: none;    
+  transition: transform 0.2s ease, box-shadow 0.2s ease;    
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);    
+}    
+  
+.hero-cta-button:hover {    
+  transform: translateY(-3px);    
+  box-shadow: 0 8px 25px rgba(74, 144, 226, 0.5);    
+}    
+  
+/* TikTok Chat Widget - Nằm trên Facebook */  
+.tiktok-chat-widget {  
+    position: fixed;  
+    bottom: 90px; /* Cao hơn Facebook widget */  
+    right: 20px;  
+    z-index: 1001; /* Z-index cao hơn Facebook */  
 }  
   
-.hero-title {  
-  font-size: 2.5rem;  
-  font-weight: 900;  
-  margin-bottom: 1rem;  
-  max-width: 700px;  
+.tiktok-chat-button {  
+    width: 60px;  
+    height: 60px;  
+    background: #000000; /* Màu đen của TikTok */  
+    border-radius: 50%;  
+    display: flex;  
+    align-items: center;  
+    justify-content: center;  
+    cursor: pointer;  
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);  
+    transition: transform 0.2s ease, box-shadow 0.2s ease;  
 }  
   
-.hero-subtitle {  
-  font-size: 1.25rem;  
-  color: var(--text-light-color);  
-  max-width: 600px;  
-  margin-bottom: 2.5rem;  
+.tiktok-chat-button:hover {  
+    transform: translateY(-3px);  
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);  
 }  
   
-.hero-buttons {  
-  display: flex;  
-  gap: 15px;  
-  justify-content: center;  
-  flex-wrap: wrap;  
+.tiktok-chat-button img {  
+    width: 30px;  
+    height: 30px;  
 }  
   
-.hero-cta-button {  
-  background-color: black;  
-  color: white;  
-  font-size: 1.2rem;  
-  font-weight: 700;  
-  padding: 1rem 2.5rem;  
-  border-radius: 50px; /* Bo tròn */  
-  text-decoration: none;  
-  transition: transform 0.2s ease, box-shadow 0.2s ease;  
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);  
+.tiktok-chat-popup {  
+    position: absolute;  
+    bottom: 70px;  
+    right: 0;  
+    width: 320px;  
+    background: white;  
+    border-radius: 12px;  
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);  
+    animation: slideIn 0.3s ease;  
 }  
   
-.hero-cta-button:hover {  
-  transform: translateY(-3px);  
-  box-shadow: 0 8px 25px rgba(74, 144, 226, 0.5);  
+.tiktok-chat-header {  
+    background: #000000;  
+    color: white;  
+    padding: 15px;  
+    border-radius: 12px 12px 0 0;  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+}  
+  
+.tiktok-chat-header button {  
+    background: none;  
+    border: none;  
+    color: white;  
+    font-size: 20px;  
+    cursor: pointer;  
+    padding: 0;  
+    width: 25px;  
+    height: 25px;  
+    display: flex;  
+    align-items: center;  
+    justify-content: center;  
+}  
+  
+.tiktok-link {  
+    display: inline-block;  
+    background: #000000;  
+    color: white;  
+    padding: 8px 16px;  
+    border-radius: 20px;  
+    text-decoration: none;  
+    font-size: 13px;  
+    text-align: center;  
+    transition: background 0.2s ease;  
+}  
+  
+.tiktok-link:hover {  
+    background: #333333;  
+}  
+  
+/* Facebook Chat Widget - Nằm dưới TikTok */  
+.facebook-chat-widget {  
+    position: fixed;  
+    bottom: 20px; /* Thấp hơn TikTok widget */  
+    right: 20px;  
+    z-index: 1000;  
+}  
+  
+.fb-chat-button {  
+    width: 60px;  
+    height: 60px;  
+    background: #1877f2;  
+    border-radius: 50%;  
+    display: flex;  
+    align-items: center;  
+    justify-content: center;  
+    cursor: pointer;  
+    box-shadow: 0 4px 15px rgba(24, 119, 242, 0.4);  
+    transition: transform 0.2s ease, box-shadow 0.2s ease;  
+}  
+  
+.fb-chat-button:hover {  
+    transform: translateY(-3px);  
+    box-shadow: 0 8px 25px rgba(24, 119, 242, 0.5);  
+}  
+  
+.fb-chat-button img {  
+    width: 30px;  
+    height: 30px;  
+}  
+  
+.fb-chat-popup {  
+    position: absolute;  
+    bottom: 70px;  
+    right: 0;  
+    width: 320px;  
+    background: white;  
+    border-radius: 12px;  
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);  
+    animation: slideIn 0.3s ease;  
+}  
+  
+.chat-header {  
+    background: #1877f2;  
+    color: white;  
+    padding: 15px;  
+    border-radius: 12px 12px 0 0;  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+}  
+  
+.chat-header button {  
+    background: none;  
+    border: none;  
+    color: white;  
+    font-size: 20px;  
+    cursor: pointer;  
+    padding: 0;  
+    width: 25px;  
+    height: 25px;  
+    display: flex;  
+    align-items: center;  
+    justify-content: center;  
+}  
+  
+.chat-content {  
+    padding: 15px;  
+}  
+  
+.chat-message {  
+    background: #f1f3f4;  
+    padding: 12px 15px;  
+    border-radius: 18px;  
+    margin-bottom: 15px;  
+    max-width: 85%;  
+    text-align: left;  
+}  
+  
+.typing-text {  
+    font-size: 14px;  
+    line-height: 1.4;  
+    color: #333;  
+    text-align: left;  
+}  
+  
+.cursor {  
+    animation: blink 1s infinite;  
+    font-weight: bold;  
+    color: #1877f2;  
+}  
+  
+@keyframes blink {  
+    0%, 50% { opacity: 1; }  
+    51%, 100% { opacity: 0; }  
+}  
+  
+.chat-input-area {  
+    display: flex;  
+    flex-direction: column;  
+    gap: 10px;  
+}  
+  
+.chat-input {  
+    width: 100%;  
+    padding: 10px 15px;  
+    border: 1px solid #ddd;  
+    border-radius: 20px;  
+    outline: none;  
+    font-size: 14px;  
+    background: #f8f9fa;  
+}  
+  
+.chat-input:disabled {  
+    cursor: not-allowed;  
+    opacity: 0.6;  
+}  
+  
+.fb-link {  
+    display: inline-block;  
+    background: #1877f2;  
+    color: white;  
+    padding: 8px 16px;  
+    border-radius: 20px;  
+    text-decoration: none;  
+    font-size: 13px;  
+    text-align: center;  
+    transition: background 0.2s ease;  
+}  
+  
+.fb-link:hover {  
+    background: #166fe5;  
+}  
+  
+@keyframes slideIn {  
+    from {  
+        opacity: 0;  
+        transform: translateY(10px);  
+    }  
+    to {  
+        opacity: 1;  
+        transform: translateY(0);  
+    }  
 }  
   
 @media (max-width: 768px) {  
-  .hero-buttons {  
-    flex-direction: column;  
-    align-items: center;  
-  }  
-    
-  .hero-cta-button {  
-    width: 100%;  
-    max-width: 250px;  
-    text-align: center;  
-  }  
+    .hero-buttons {  
+        flex-direction: column;  
+        align-items: center;  
+    }  
+      
+    .hero-cta-button {  
+        width: 100%;  
+        max-width: 250px;  
+        text-align: center;  
+    }  
+      
+    .tiktok-chat-widget {  
+        bottom: 85px;  
+        right: 15px;  
+    }  
+      
+    .tiktok-chat-popup {  
+        width: 300px;  
+        right: -10px;  
+    }  
+      
+    .facebook-chat-widget {  
+        bottom: 15px;  
+        right: 15px;  
+    }  
+      
+    .fb-chat-popup {  
+        width: 300px;  
+        right: -10px;  
+    }  
 }
