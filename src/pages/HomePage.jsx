@@ -91,7 +91,7 @@ function HomePage() {
       
     return (  
         <div className="hero-section">  
-            <img className="Logo-h" src="/Logo.jpg" alt="Scaduwing Heroes Logo" />  
+            <img className="Logo-h" src="/logo.jpg" alt="Scaduwing Heroes Logo" />  
             <h3 className="hero-title">Scaduwing Heroes Học Ngoại Ngữ Theo Cách Mới</h3>  
             <p className="hero-subtitle">  
                 Kết hợp thẻ bài vật lý và công nghệ tương tác để ghi nhớ từ vựng hiệu quả và thú vị hơn bao giờ hết.  

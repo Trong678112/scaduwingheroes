@@ -142,7 +142,7 @@ function CardPage() {
     return (
         <div className="card-page-container">
             <div className="card-header">
-                <img className="logo-h" src="/Logo.jpg" alt="Logo" />
+                <img className="Logo-h" src="/logo.jpg" alt="Scaduwing Heroes Logo" /> 
                 <h1>{card.theme}</h1>
                 <p>Bộ thẻ: {card.language === 'english' ? 'Tiếng Anh' : 'Tiếng Nhật'}</p>
             </div>
