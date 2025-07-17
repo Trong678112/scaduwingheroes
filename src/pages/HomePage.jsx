@@ -96,14 +96,17 @@ function HomePage() {
             <p className="hero-subtitle">  
                 Kết hợp thẻ bài vật lý và công nghệ tương tác để ghi nhớ từ vựng hiệu quả và thú vị hơn bao giờ hết.  
             </p>  
-            <div className="hero-buttons">  
-                <Link to="/scan" className="hero-cta-button">  
-                    Bắt đầu quét thẻ  
-                </Link>  
-                <Link to="/library" className="hero-cta-button">  
-                    Thư viện thẻ bài  
-                </Link>  
-            </div>  
+           <div className="hero-buttons">    
+  <Link to="/library" className="hero-cta-button">    
+    Thư viện thẻ bài    
+  </Link>  
+   <Link to="/scan" className="hero-cta-button">    
+    Bắt đầu quét thẻ  
+  </Link>    
+  <Link to="/dictionary" className="hero-cta-button">    
+    Tra từ điển Anh-Việt    
+  </Link>  
+</div> 
               
             {/* TikTok Chat Widget - Nằm trên Facebook */}  
             <div className="tiktok-chat-widget">  

@@ -117,6 +117,7 @@ function Header() {
               <NavLink to="/scan" onClick={closeMobileMenu}>📷 Quét Mã</NavLink>  
               <NavLink to="/library" onClick={closeMobileMenu}>📚 Thư Viện</NavLink>  
               <NavLink to="/guide" onClick={closeMobileMenu}>📖 Hướng dẫn cách chơi</NavLink>  
+              <NavLink to="/dictionary" onClick={closeMobileMenu}>📕 Tra Từ điển Anh-Việt</NavLink>  
             </div>  
           </div>  
   
