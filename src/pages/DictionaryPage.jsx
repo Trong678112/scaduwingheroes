@@ -175,7 +175,7 @@ function DictionaryPage() {
     >  
       <div className="dictionary-container">  
         <div className="dictionary-header">  
-          <img className="logo-h" src="/logo.jpg" alt="Logo" />  
+          <img className="dictlogo-h" src="/logo.jpg" alt="Logo" />  
           <h1>Từ điển Anh-Việt</h1>  
           <p>Tra cứu từ vựng tiếng Anh với nghĩa tiếng Việt</p>  
         </div>  

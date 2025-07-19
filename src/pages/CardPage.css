@@ -207,3 +207,15 @@
     margin: 0;  
     opacity: 0.8;  
 }
+.Logo-h {  
+  width: 200px;  
+  height: 200px;  
+  border-radius: 50%;  
+  border: none;  
+  box-shadow: none;  
+  margin-bottom: 2rem;  
+  margin-top: 1rem;  
+  z-index: 2;  
+  position: relative;  
+  object-fit: contain; /* Thay đổi từ cover thành contain */  
+}

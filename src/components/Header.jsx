@@ -48,11 +48,18 @@ function Header() {
   return (  
     <header className="site-header">  
       <div className="container">  
-        <Link to="/" className="logo">  
-          Scaduwing Heroes  
-        </Link>  
+        {/* Hamburger Button - Di chuyển lên đầu */}  
+        <button  
+          className={`mobile-menu-toggle ${isMenuOpen ? 'open' : ''}`}  
+          onClick={toggleMobileMenu}  
+          aria-label="Toggle menu"  
+        >  
+          <span></span>  
+          <span></span>  
+          <span></span>  
+        </button>  
   
-        {/* Music Player Container */}  
+        {/* Music Player Container - Ở giữa */}  
         <div className="music-player-container">  
           <button  
             className={`music-toggle ${isPlaying ? 'spinning' : ''}`}  
@@ -84,6 +91,11 @@ function Header() {
           )}  
         </div>  
   
+        {/* Logo - Di chuyển sang phải */}  
+        <Link to="/" className="logo">  
+          Scaduwing Heroes  
+        </Link>  
+  
         {/* Hidden Audio Element */}  
         <audio  
           ref={audioRef}  
@@ -95,18 +107,7 @@ function Header() {
           Trình duyệt không hỗ trợ audio.  
         </audio>  
   
-        {/* Hamburger Button */}  
-        <button  
-          className={`mobile-menu-toggle ${isMenuOpen ? 'open' : ''}`}  
-          onClick={toggleMobileMenu}  
-          aria-label="Toggle menu"  
-        >  
-          <span></span>  
-          <span></span>  
-          <span></span>  
-        </button>  
-  
-        {/* Mobile Navigation Menu */}  
+        {/* Mobile Navigation Menu - Slide từ trái */}  
         <nav className={`mobile-nav ${isMenuOpen ? 'open' : ''}`}>  
           <div className="mobile-nav-content">  
             <div className="mobile-nav-header">  

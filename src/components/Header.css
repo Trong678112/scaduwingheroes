@@ -1,481 +1,525 @@
-.site-header {  
-  background-color: var(--surface-color);  
-  padding: 1rem 0;  
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);  
-  position: sticky;  
-  top: 0;  
-  z-index: 100;  
-}  
-  
-.site-header .container {  
-  display: flex;  
-  justify-content: space-between;  
-  align-items: center;  
-  max-width: 1100px;  
-  margin: 0 auto;  
-  padding: 0 2rem;  
-  position: relative;  
-}  
-  
-.logo {  
-  font-size: 1.5rem;  
-  font-weight: 900;  
-  color: var(--primary-color);  
-  text-decoration: none;  
-}  
-  
-.logo:hover {  
-  text-decoration: none;  
-}  
-  
-/* Music Player Container */  
-.music-player-container {  
-  position: relative;  
-  margin-left: auto;  
-  margin-right: 1rem;  
-}  
-  
-/* Music Toggle Button */  
-.music-toggle {  
-  background: none;  
-  border: none;  
-  font-size: 1.5rem;  
-  cursor: pointer;  
-  padding: 8px;  
-  border-radius: 50%;  
-  transition: all 0.3s ease;  
-}  
-  
-.music-toggle:hover {  
-  background-color: rgba(0, 0, 0, 0.1);  
-  transform: scale(1.1);  
-}  
-  
-.music-toggle.spinning {  
-  animation: spin 2s linear infinite;  
-}  
-  
-@keyframes spin {  
-  from { transform: rotate(0deg); }  
-  to { transform: rotate(360deg); }  
-}  
-  
-/* Song Selector Popup */  
-.song-selector-popup {  
-  position: absolute;  
-  top: 50px;  
-  right: 0;  
-  width: 250px;  
-  background: white;  
-  border-radius: 12px;  
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);  
-  animation: slideIn 0.3s ease;  
-  z-index: 1001;  
-}  
-  
-.song-selector-header {  
-  background: var(--primary-color);  
-  color: white;  
-  padding: 12px 15px;  
-  border-radius: 12px 12px 0 0;  
-  font-weight: 600;  
-  text-align: center;  
-}  
-  
-.song-list {  
-  padding: 8px 0;  
-}  
-  
-.song-item {  
-  padding: 12px 15px;  
-  cursor: pointer;  
-  display: flex;  
-  justify-content: space-between;  
-  align-items: center;  
-  transition: background-color 0.2s ease;  
-  border-bottom: 1px solid #f0f0f0;  
-}  
-  
-.song-item:hover {  
-  background-color: #f8f9fa;  
-}  
-  
-.song-item.active {  
-  background-color: #e3f2fd;  
-  color: var(--primary-color);  
-  font-weight: 600;  
-}  
-  
-.song-item:last-child {  
-  border-bottom: none;  
-}  
-  
-.song-name {  
-  font-size: 14px;  
-}  
-  
-.playing-indicator {  
-  font-size: 12px;  
-  color: var(--primary-color);  
-  animation: pulse 1.5s infinite;  
-}  
-  
-@keyframes pulse {  
-  0%, 100% { opacity: 1; }  
-  50% { opacity: 0.5; }  
-}  
-  
-@keyframes slideIn {  
-  from {  
-    opacity: 0;  
-    transform: translateY(-10px);  
-  }  
-  to {  
-    opacity: 1;  
-    transform: translateY(0);  
-  }  
-}  
-  
-/* Hamburger Menu Styles */  
-.mobile-menu-toggle {  
-  display: flex;  
-  flex-direction: column;  
-  background: none;  
-  border: none;  
-  cursor: pointer;  
-  padding: 8px;  
-  z-index: 1001;  
-  transition: all 0.3s ease;  
-  border: 1px solid var(--text-color);  
-  border-radius: 4px;  
-}  
-  
-.mobile-menu-toggle:hover {  
-  background-color: var(--primary-color);  
-}  
-  
-.mobile-menu-toggle:hover span {  
-  background-color: white;  
-}  
-  
-.mobile-menu-toggle span {  
-  width: 25px;  
-  height: 3px;  
-  background-color: var(--text-color);  
-  margin: 3px 0;  
-  transition: all 0.3s ease;  
-  transform-origin: center;  
-}  
-  
-/* Hamburger Animation */  
-.mobile-menu-toggle.open span:nth-child(1) {  
-  transform: rotate(45deg) translate(6px, 6px);  
-}  
-  
-.mobile-menu-toggle.open span:nth-child(2) {  
-  opacity: 0;  
-}  
-  
-.mobile-menu-toggle.open span:nth-child(3) {  
-  transform: rotate(-45deg) translate(6px, -6px);  
-}  
-  
-/* Mobile Navigation - Slide từ phải */  
-.mobile-nav {  
-  display: flex;  
-  position: fixed;  
-  top: 0;  
-  right: -350px;  
-  width: 350px;  
-  height: 100vh;  
-  background-color: var(--surface-color);  
-  flex-direction: column;  
-  justify-content: space-between; /* Thêm để đẩy team section xuống bottom */  
-  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.15);  
-  opacity: 0;  
-  visibility: hidden;  
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);  
-  z-index: 1000;  
-  overflow-y: auto;  
-}  
-  
-.mobile-nav.open {  
-  right: 0;  
-  opacity: 1;  
-  visibility: visible;  
-}  
-  
-/* Mobile Navigation Content Wrapper */  
-.mobile-nav-content {  
-  flex: 1;  
-  display: flex;  
-  flex-direction: column;  
-}  
-  
-/* Mobile Navigation Header */  
-.mobile-nav-header {  
-  padding: 2rem;  
-  border-bottom: 2px solid #eee;  
-  text-align: center;  
-  background: linear-gradient(135deg, var(--primary-color), #667eea);  
-  color: white;  
-  margin-bottom: 1rem;  
-}  
-  
-.mobile-nav-header h3 {  
-  margin: 0;  
-  font-size: 1.3rem;  
-  font-weight: 800;  
-}  
-  
-/* Navigation Links Container */  
-.nav-links {  
-  display: flex;  
-  flex-direction: column;  
-  flex: 1;  
-}  
-  
-/* Mobile Navigation Links */  
-.nav-links a {  
-  padding: 1.2rem 2rem;  
-  margin: 0;  
-  border-bottom: 1px solid #eee;  
-  font-size: 1.1rem;  
-  font-weight: 700;  
-  color: var(--text-color);  
-  text-decoration: none;  
-  transition: all 0.3s ease;  
-  position: relative;  
-  transform: translateX(50px);  
-  opacity: 0;  
-}  
-  
-.nav-links a:hover {  
-  color: var(--primary-color);  
-  background-color: #f8f9fa;  
-  padding-left: 2.5rem;  
-}  
-  
-.nav-links a.active {  
-  color: var(--primary-color);  
-  background-color: #f0f8ff;  
-  border-left: 4px solid var(--primary-color);  
-}  
-  
-.nav-links a:last-child {  
-  border-bottom: none;  
-}  
-  
-/* Team Information Section - Cải thiện styling chuyên nghiệp */  
-.team-info-section {  
-  padding: 2rem 0;  
-  border-top: 3px solid var(--primary-color);  
-  background: linear-gradient(135deg, #f8f9fa, #ffffff);  
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);  
-  margin-top: auto; /* Đảm bảo luôn ở bottom */  
-}  
-  
-.team-header {  
-  padding: 0 2rem 1.5rem 2rem;  
-  text-align: center;  
-  position: relative;  
-}  
-  
-.team-header::after {  
-  content: '';  
-  position: absolute;  
-  bottom: 0.5rem;  
-  left: 50%;  
-  transform: translateX(-50%);  
-  width: 60px;  
-  height: 3px;  
-  background: var(--primary-color);  
-  border-radius: 2px;  
-}  
-  
-.team-header h4 {  
-  margin: 0;  
-  font-size: 1.2rem;  
-  font-weight: 800;  
-  color: var(--primary-color);  
-  text-transform: uppercase;  
-  letter-spacing: 0.5px;  
-}  
-  
-.team-members {  
-  padding: 0 2rem;  
-  margin-bottom: 1rem;  
-}  
-  
-.team-member {  
-  display: flex;  
-  flex-direction: column;  
-  padding: 1rem 0;  
-  border-bottom: 1px solid #e9ecef;  
-  transition: all 0.3s ease;  
-  border-radius: 8px;  
-  margin-bottom: 0.5rem;  
-}  
-  
-.team-member:hover {  
-  background-color: rgba(74, 144, 226, 0.05);  
-  padding-left: 0.5rem;  
-  transform: translateX(5px);  
-}  
-  
-.team-member:last-child {  
-  border-bottom: none;  
-  margin-bottom: 0;  
-}  
-  
-.member-name {  
-  font-weight: 700;  
-  font-size: 1rem;  
-  color: #2c3e50;  
-  margin-bottom: 0.3rem;  
-}  
-  
-.member-role {  
-  font-size: 0.9rem;  
-  color: #7f8c8d;  
-  font-style: normal;  
-  font-weight: 500;  
-}  
-  
-.contact-info {  
-  padding: 1.5rem 2rem 0 2rem;  
-  border-top: 2px solid #e9ecef;  
-  background: rgba(74, 144, 226, 0.02);  
-}  
-  
-.contact-item {  
-  display: flex;  
-  align-items: center;  
-  margin-bottom: 1rem;  
-  font-size: 0.95rem;  
-  padding: 0.5rem;  
-  border-radius: 8px;  
-  transition: all 0.3s ease;  
-}  
-  
-.contact-item:hover {  
-  background-color: rgba(74, 144, 226, 0.1);  
-  transform: translateX(3px);  
-}  
-  
-.contact-item:last-child {  
-  margin-bottom: 0;  
-}  
-  
-.contact-icon {  
-  margin-right: 1rem;  
-  font-size: 1.2rem;  
-  width: 24px;  
-  text-align: center;  
-}  
-  
-.contact-text {  
-  color: #34495e;  
-  font-weight: 500;  
-  word-break: break-word;  
-}  
-  
-/* Overlay khi menu mở */  
-.mobile-nav-overlay {  
-  position: fixed;  
-  top: 0;  
-  left: 0;  
-  right: 0;  
-  bottom: 0;  
-  background: rgba(0, 0, 0, 0.6);  
-  opacity: 0;  
-  visibility: hidden;  
-  transition: all 0.3s ease;  
-  z-index: 999;  
-  backdrop-filter: blur(2px);  
-}  
-  
-.mobile-nav-overlay.open {  
-  opacity: 1;  
-  visibility: visible;  
-}  
-  
-/* Animation cho mobile menu items */  
-.mobile-nav.open .nav-links a {  
-  transform: translateX(0);  
-  opacity: 1;  
-}  
-  
-.mobile-nav.open .nav-links a:nth-child(1) { transition-delay: 0.1s; }  
-.mobile-nav.open .nav-links a:nth-child(2) { transition-delay: 0.2s; }  
-.mobile-nav.open .nav-links a:nth-child(3) { transition-delay: 0.3s; }  
-.mobile-nav.open .nav-links a:nth-child(4) { transition-delay: 0.4s; }  
-  
-/* Animation cho team info */  
-.mobile-nav.open .team-info-section {  
-  animation: slideInUp 0.5s ease 0.3s both;  
-}  
-  
-@keyframes slideInUp {  
-  from {  
-    opacity: 0;  
-    transform: translateY(20px);  
-  }  
-  to {  
-    opacity: 1;  
-    transform: translateY(0);  
-  }  
-}  
-  
-/* Mobile responsive */  
-@media (max-width: 480px) {  
-  .mobile-nav {  
-    width: 100vw;  
-    right: -100vw;  
-  }  
-      
-  .mobile-nav.open {  
-    right: 0;  
-  }  
-      
-  .site-header .container {  
-    padding: 0 1rem;  
-  }  
-      
-  .logo {  
-    font-size: 1.3rem;  
-  }  
-      
-  .music-toggle {  
-    margin-right: 0.5rem;  
-  }  
+.site-header {    
+  background: linear-gradient(135deg, #000000, #1a1a1a, #333333);    
+  padding: 1rem 0;    
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);    
+  position: sticky;    
+  top: 0;    
+  z-index: 100;    
+  border-bottom: 2px solid #ffffff;    
+}    
     
+.site-header .container {    
+  display: flex;    
+  justify-content: space-between;    
+  align-items: center;    
+  max-width: 1100px;    
+  margin: 0 auto;    
+  padding: 0 2rem;    
+  position: relative;    
+  overflow: visible; /* Đảm bảo popup không bị cắt */  
+}    
+    
+/* Logo - Di chuyển sang phải với fantasy styling */    
+.logo {    
+  font-size: 1.5rem;    
+  font-weight: 900;    
+  color: #ffffff;    
+  text-decoration: none;    
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);    
+  order: 3;    
+  margin-left: auto;    
+  background: linear-gradient(45deg, #ffffff, #cccccc);    
+  -webkit-background-clip: text;    
+  -webkit-text-fill-color: transparent;    
+  background-clip: text;    
+}    
+    
+.logo:hover {    
+  text-decoration: none;    
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);    
+  transform: scale(1.05);    
+  transition: all 0.3s ease;    
+}    
+    
+/* Music Player Container - Ở giữa */    
+.music-player-container {    
+  position: relative;    
+  order: 2;    
+  margin: 0 1rem;    
+  overflow: visible; /* Đảm bảo popup không bị cắt */  
+}    
+    
+/* Music Toggle Button với fantasy theme */    
+.music-toggle {    
+  background: linear-gradient(135deg, #1a1a1a, #333333);    
+  border: 2px solid #ffffff;    
+  font-size: 1.5rem;    
+  cursor: pointer;    
+  padding: 8px;    
+  border-radius: 50%;    
+  transition: all 0.3s ease;    
+  color: #ffffff;    
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);    
+}    
+    
+.music-toggle:hover {    
+  background: linear-gradient(135deg, #333333, #555555);    
+  transform: scale(1.1);    
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);    
+}    
+    
+.music-toggle.spinning {    
+  animation: spin 2s linear infinite;    
+}    
+    
+@keyframes spin {    
+  from { transform: rotate(0deg); }    
+  to { transform: rotate(360deg); }    
+}    
+    
+/* Song Selector Popup với fantasy theme - Cải thiện cho mobile */    
+/* Song Selector Popup với fantasy theme - Đổ về bên phải */    
+.song-selector-popup {    
+  position: absolute;    
+  top: 50px;    
+  left: 0; /* Thay đổi từ right: 0 thành left: 0 */  
+  width: 250px;    
+  background: linear-gradient(135deg, #f0f0f0, #f1f1f1);    
+  border: 2px solid #ffffff;    
+  border-radius: 12px;    
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);    
+  animation: slideIn 0.3s ease;    
+  z-index: 1002;  
+}      
+    
+.song-selector-header {    
+  background: linear-gradient(135deg, #000000, #333333);    
+  color: #ffffff;    
+  padding: 12px 15px;    
+  border-radius: 10px 10px 0 0;    
+  font-weight: 600;    
+  text-align: center;    
+  border-bottom: 1px solid #ffffff;    
+}    
+    
+.song-list {    
+  padding: 8px 0;    
+}    
+    
+.song-item {      
+  padding: 12px 15px;      
+  cursor: pointer;      
+  display: flex;      
+  justify-content: space-between;      
+  align-items: center;      
+  transition: background-color 0.2s ease;      
+  border-bottom: 1px solid #444444;      
+  color: #000000; /* Đổi từ #020202 thành #ffffff để phù hợp với theme đen */  
+  font-weight: bold; /* Thêm dòng này để làm đậm text */  
+}
+    
+.song-item:hover {    
+  background-color: rgba(255, 255, 255, 0.1);    
+}    
+    
+.song-item.active {    
+  background-color: rgba(255, 255, 255, 0.2);    
+  color: #000000;    
+  font-weight: 600;    
+}    
+    
+.song-item:last-child {    
+  border-bottom: none;    
+}    
+    
+.song-name {    
+  font-size: 14px;    
+}    
+    
+.playing-indicator {    
+  font-size: 12px;    
+  color: #ffffff;    
+  animation: pulse 1.5s infinite;    
+}    
+    
+@keyframes pulse {    
+  0%, 100% { opacity: 1; }    
+  50% { opacity: 0.5; }    
+}    
+    
+@keyframes slideIn {    
+  from {    
+    opacity: 0;    
+    transform: translateY(-10px);    
+  }    
+  to {    
+    opacity: 1;    
+    transform: translateY(0);    
+  }    
+}    
+    
+/* Hamburger Menu - Di chuyển sang trái với fantasy styling */    
+.mobile-menu-toggle {    
+  display: flex;    
+  flex-direction: column;    
+  background: linear-gradient(135deg, #1a1a1a, #333333);    
+  border: 2px solid #ffffff;    
+  cursor: pointer;    
+  padding: 8px;    
+  z-index: 1001;    
+  transition: all 0.3s ease;    
+  border-radius: 8px;    
+  order: 1;    
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);    
+}    
+    
+.mobile-menu-toggle:hover {    
+  background: linear-gradient(135deg, #333333, #555555);    
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);    
+}    
+    
+.mobile-menu-toggle span {    
+  width: 25px;    
+  height: 3px;    
+  background-color: #ffffff;    
+  margin: 3px 0;    
+  transition: all 0.3s ease;    
+  transform-origin: center;    
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);    
+}    
+    
+/* Hamburger Animation */    
+.mobile-menu-toggle.open span:nth-child(1) {    
+  transform: rotate(45deg) translate(6px, 6px);    
+}    
+    
+.mobile-menu-toggle.open span:nth-child(2) {    
+  opacity: 0;    
+}    
+    
+.mobile-menu-toggle.open span:nth-child(3) {    
+  transform: rotate(-45deg) translate(6px, -6px);    
+}    
+    
+/* Mobile Navigation - Slide từ trái với fantasy theme */    
+.mobile-nav {    
+  display: flex;    
+  position: fixed;    
+  top: 0;    
+  left: -350px;    
+  width: 350px;    
+  height: 100vh;    
+  background: linear-gradient(180deg, #000000 0%, #1a1a1a 50%, #333333 100%);    
+  flex-direction: column;    
+  justify-content: space-between;    
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5);    
+  opacity: 0;    
+  visibility: hidden;    
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);    
+  z-index: 1000;    
+  overflow-y: auto;    
+  border-right: 3px solid #ffffff;    
+}    
+    
+.mobile-nav.open {    
+  left: 0;    
+  opacity: 1;    
+  visibility: visible;    
+}    
+  
+.mobile-nav-content {    
+  flex: 1;    
+  display: flex;    
+  flex-direction: column;    
+}    
+    
+/* Mobile Navigation Header với fantasy theme */    
+.mobile-nav-header {    
+  padding: 2rem;    
+  border-bottom: 2px solid #ffffff;    
+  text-align: center;    
+  background: linear-gradient(135deg, #000000, #333333);    
+  color: #ffffff;    
+  margin-bottom: 1rem;    
+}    
+    
+.mobile-nav-header h3 {    
+  margin: 0;    
+  font-size: 1.3rem;    
+  font-weight: 800;    
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);    
+}    
+    
+/* Navigation Links Container */    
+.nav-links {    
+  display: flex;    
+  flex-direction: column;    
+  flex: 1;    
+}    
+    
+/* Mobile Navigation Links với fantasy theme */    
+.nav-links a {    
+  padding: 1.2rem 2rem;    
+  margin: 0;    
+  border-bottom: 1px solid #444444;    
+  font-size: 1.1rem;    
+  font-weight: 700;    
+  color: #ffffff;    
+  text-decoration: none;    
+  transition: all 0.3s ease;    
+  position: relative;    
+  transform: translateX(-50px);    
+  opacity: 0;    
+}    
+    
+.nav-links a:hover {    
+  color: #ffffff;    
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));    
+  padding-left: 2.5rem;    
+  box-shadow: inset 4px 0 0 #ffffff;    
+}    
+    
+.nav-links a.active {    
+  color: #ffffff;    
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));    
+  border-left: 4px solid #ffffff;    
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);    
+}    
+    
+.nav-links a:last-child {    
+  border-bottom: none;    
+}    
+    
+/* Team Information Section với fantasy theme */    
+.team-info-section {    
+  padding: 2rem 0;    
+  border-top: 3px solid #ffffff;    
+  background: linear-gradient(135deg, #1a1a1a, #000000);    
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);    
+  margin-top: auto;    
+}    
+    
+.team-header {    
+  padding: 0 2rem 1.5rem 2rem;    
+  text-align: center;    
+  position: relative;    
+}    
+    
+.team-header::after {    
+  content: '';    
+  position: absolute;    
+  bottom: 0.5rem;    
+  left: 50%;    
+  transform: translateX(-50%);    
+  width: 60px;    
+  height: 3px;    
+  background: #ffffff;    
+  border-radius: 2px;    
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);    
+}    
+    
+.team-header h4 {    
+  margin: 0;    
+  font-size: 1.2rem;    
+  font-weight: 800;    
+  color: #ffffff;    
+  text-transform: uppercase;    
+  letter-spacing: 0.5px;    
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);    
+}    
+    
+.team-members {    
+  padding: 0 2rem;    
+  margin-bottom: 1rem;    
+}    
+    
+.team-member {    
+  display: flex;    
+  flex-direction: column;    
+  padding: 1rem 0;    
+  border-bottom: 1px solid #444444;    
+  transition: all 0.3s ease;    
+  border-radius: 8px;    
+  margin-bottom: 0.5rem;    
+}    
+    
+.team-member:hover {    
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));    
+  padding-left: 0.5rem;    
+  transform: translateX(5px);    
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);    
+}    
+    
+.team-member:last-child {    
+  border-bottom: none;    
+  margin-bottom: 0;    
+}    
+    
+.member-name {    
+  font-weight: 700;    
+  font-size: 1rem;    
+  color: #ffffff;    
+  margin-bottom: 0.3rem;    
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);    
+}    
+    
+.member-role {    
+  font-size: 0.9rem;    
+  color: #cccccc;    
+  font-style: normal;    
+  font-weight: 500;    
+}    
+    
+.contact-info {    
+  padding: 1.5rem 2rem 0 2rem;    
+  border-top: 2px solid #444444;    
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.1));    
+}    
+    
+.contact-item {    
+  display: flex;    
+  align-items: center;    
+  margin-bottom: 1rem;    
+  font-size: 0.95rem;    
+  padding: 0.5rem;    
+  border-radius: 8px;    
+  transition: all 0.3s ease;    
+  color: #ffffff;    
+} 
+.contact-item:hover {    
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));    
+  transform: translateX(3px);    
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);    
+}    
+    
+.contact-item:last-child {    
+  margin-bottom: 0;    
+}    
+    
+.contact-icon {    
+  margin-right: 1rem;    
+  font-size: 1.2rem;    
+  width: 24px;    
+  text-align: center;    
+}    
+    
+.contact-text {    
+  color: #ffffff;    
+  font-weight: 500;    
+  word-break: break-word;    
+}    
+    
+/* Overlay khi menu mở với fantasy effect */    
+.mobile-nav-overlay {    
+  position: fixed;    
+  top: 0;    
+  left: 0;    
+  right: 0;    
+  bottom: 0;    
+  background: rgba(0, 0, 0, 0.8);    
+  opacity: 0;    
+  visibility: hidden;    
+  transition: all 0.3s ease;    
+  z-index: 999;    
+  backdrop-filter: blur(3px);    
+}    
+    
+.mobile-nav-overlay.open {    
+  opacity: 1;    
+  visibility: visible;    
+}    
+    
+/* Animation cho mobile menu items */    
+.mobile-nav.open .nav-links a {    
+  transform: translateX(0);    
+  opacity: 1;    
+}    
+    
+.mobile-nav.open .nav-links a:nth-child(1) { transition-delay: 0.1s; }    
+.mobile-nav.open .nav-links a:nth-child(2) { transition-delay: 0.2s; }    
+.mobile-nav.open .nav-links a:nth-child(3) { transition-delay: 0.3s; }    
+.mobile-nav.open .nav-links a:nth-child(4) { transition-delay: 0.4s; }    
+.mobile-nav.open .nav-links a:nth-child(5) { transition-delay: 0.5s; }    
+    
+/* Animation cho team info */    
+.mobile-nav.open .team-info-section {    
+  animation: slideInUp 0.5s ease 0.3s both;    
+}    
+    
+@keyframes slideInUp {    
+  from {    
+    opacity: 0;    
+    transform: translateY(20px);    
+  }    
+  to {    
+    opacity: 1;    
+    transform: translateY(0);    
+  }    
+}    
+    
+/* Mobile responsive với fantasy theme - Cải thiện cho song selector */    
+@media (max-width: 480px) {    
+  .mobile-nav {    
+    width: 100vw;    
+    left: -100vw;    
+  }    
+          
+  .mobile-nav.open {    
+    left: 0;    
+  }    
+          
+  .site-header .container {    
+    padding: 0 0.5rem; /* Giảm padding để có thêm không gian */  
+    overflow: visible;  
+  }    
+          
+  .logo {    
+    font-size: 1.3rem;    
+  }    
+          
+  .music-toggle {    
+    margin-right: 0.3rem; /* Giảm margin */  
+  }    
+        
+  .song-selector-popup {    
+    width: 280px; /* Tăng width để dễ nhìn hơn */  
+    right: -50px; /* Điều chỉnh để không bị tràn ra ngoài màn hình */  
+    top: 45px; /* Giảm khoảng cách từ button */  
+  }    
+        
+  /* Mobile responsive cho team info */    
+  .team-member {    
+    padding: 0.8rem 0;    
+  }    
+          
+  .member-name {    
+    font-size: 0.95rem;    
+  }    
+          
+  .member-role {    
+    font-size: 0.85rem;    
+  }    
+          
+  .contact-text {    
+    font-size: 0.9rem;    
+  }    
+}    
+  
+/* Responsive cho màn hình rất nhỏ */  
+@media (max-width: 360px) {  
   .song-selector-popup {  
-    width: 200px;  
-    right: -10px;  
-  }  
-    
-  /* Mobile responsive cho team info */  
-  .team-member {  
-    padding: 0.8rem 0;  
-  }  
-      
-  .member-name {  
-    font-size: 0.95rem;  
-  }  
-      
-  .member-role {  
-    font-size: 0.85rem;  
-  }  
-      
-  .contact-text {  
-    font-size: 0.9rem;  
+    position: fixed;  
+    top: 70px;  
+    left: 10px;  
+    right: 10px;  
+    width: auto;  
+    z-index: 1002;  
   }  
 }  
-  
-/* Tablet responsive */  
-@media (max-width: 1024px) and (min-width: 769px) {  
-  .site-header .container {  
-    padding: 0 1rem;  
-  }  
+    
+/* Tablet responsive */    
+@media (max-width: 1024px) and (min-width: 769px) {    
+  .site-header .container {    
+    padding: 0 1rem;    
+  }    
 }

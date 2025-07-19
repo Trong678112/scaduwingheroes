@@ -26,10 +26,10 @@
   position: relative;      
 }         
           
-.logo-h {          
-  width: 100px;      
-  height: 130px;       
-  border-radius: 8px;      
+.dictlogo-h {          
+  width: 150px;      
+  height: 150px;       
+  border-radius: 50%;      
   margin: 0 auto 1rem auto;          
   object-fit: contain;          
   border: 1px solid white;          
@@ -578,8 +578,8 @@
     margin-left: 0;          
   }          
             
-  .logo-h {          
-    width: 80px;          
+  .dictlogo-h{          
+    width: 120px;          
     height: 120px;          
     margin-bottom: 0.5rem;      
   }  
@@ -716,8 +716,8 @@
     padding: 0.6rem;          
   }          
             
-  .logo-h {          
-    width: 70px;          
+  .dictlogo-h {          
+    width: 120px;          
     height: 120px;          
   }          
             
