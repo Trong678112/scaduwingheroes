@@ -1,18 +1,19 @@
 import React, { useState } from 'react';  
+import { useParams } from 'react-router-dom';  
 import { Document, Page, pdfjs } from 'react-pdf';  
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';  
 import 'react-pdf/dist/esm/Page/TextLayer.css';  
-import './GuidePage.css';  
+import './NovelPage.css';  
   
 // Configure PDF.js worker  
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;  
   
-function GuidePage() {  
+function NovelPage() {  
+    const { novelId } = useParams();  
     const [showPDF, setShowPDF] = useState(false);  
     const [numPages, setNumPages] = useState(null);  
     const [pageNumber, setPageNumber] = useState(1);  
     const [scale, setScale] = useState(1.0);  
-    const [isFullscreen, setIsFullscreen] = useState(false);  
   
     function onDocumentLoadSuccess({ numPages }) {  
         setNumPages(numPages);  
@@ -40,30 +41,19 @@ function GuidePage() {
         }  
     };  
   
-    const toggleFullscreen = () => {  
-        setIsFullscreen(!isFullscreen);  
-    };  
-  
     if (!showPDF) {  
         return (  
             <div className="guide-menu">  
-                <h1>📚 Trung tâm hướng dẫn</h1>  
+                <h1>📚 Tiểu Thuyết Ánh Sáng / Light Novel</h1>  
                 <div className="guide-cards">  
                     <div   
                         className="guide-card active"  
                         onClick={() => setShowPDF(true)}  
                     >  
-                        <div className="card-icon">🎴</div>  
-                        <h3>Hướng dẫn chơi bộ bài trò chơi từ vựng</h3>  
-                        <p>Ngữ thành ngôn hợp</p>  
-                        <span className="card-status">Có sẵn</span>  
-                    </div>  
-                      
-                    <div className="guide-card coming-soon">  
-                        <div className="card-icon">🚧</div>  
-                        <h3>Hướng dẫn nâng cao</h3>  
-                        <p>Các tính năng mới</p>  
-                        <span className="card-status">Coming Soon</span>  
+                        <div className="card-icon">📖</div>  
+                        <h3>Thế Giới Ngôn Thuật</h3>  
+                        <p>Tác giả : Pleiades</p>  
+                        <span className="card-status">Xem</span>  
                     </div>  
                 </div>  
             </div>  
@@ -71,19 +61,18 @@ function GuidePage() {
     }  
   
     return (  
-        <div className={`pdf-viewer ${isFullscreen ? 'fullscreen' : ''}`}>  
+        <div className="pdf-viewer">  
             <div className="pdf-header">  
                 <div className="header-left">  
                     <button   
                         className="back-btn"  
                         onClick={() => setShowPDF(false)}  
-                        title="Quay lại menu"  
                     >  
                         ← Quay lại  
                     </button>  
                     <div className="header-info">  
-                        <h1>📖 Hướng dẫn cách chơi</h1>  
-                        <span className="document-info">Scaduwing Heroes</span>  
+                        <h1>📖 Thế Giới Ngôn Thuật</h1>  
+                        <span className="document-info">Light Novel Fantasy</span>  
                     </div>  
                 </div>  
                   
@@ -93,7 +82,6 @@ function GuidePage() {
                             onClick={() => setPageNumber(1)}  
                             disabled={pageNumber <= 1}  
                             className="control-btn"  
-                            title="Trang đầu"  
                         >  
                             ⏮  
                         </button>  
@@ -101,7 +89,6 @@ function GuidePage() {
                             onClick={prevPage}  
                             disabled={pageNumber <= 1}  
                             className="control-btn"  
-                            title="Trang trước"  
                         >  
                             ◀  
                         </button>  
@@ -122,7 +109,6 @@ function GuidePage() {
                             onClick={nextPage}  
                             disabled={pageNumber >= numPages}  
                             className="control-btn"  
-                            title="Trang sau"  
                         >  
                             ▶  
                         </button>  
@@ -130,44 +116,17 @@ function GuidePage() {
                             onClick={() => setPageNumber(numPages)}  
                             disabled={pageNumber >= numPages}  
                             className="control-btn"  
-                            title="Trang cuối"  
                         >  
                             ⏭  
                         </button>  
                     </div>  
                       
                     <div className="zoom-controls">  
-                        <button   
-                            onClick={zoomOut}  
-                            className="control-btn"  
-                            title="Thu nhỏ"  
-                        >  
-                            −  
-                        </button>  
-                        <button   
-                            onClick={() => setScale(1.0)}  
-                            className="zoom-display"  
-                            title="Reset zoom"  
-                        >  
+                        <button onClick={zoomOut} className="control-btn">−</button>  
+                        <button onClick={() => setScale(1.0)} className="zoom-display">  
                             {Math.round(scale * 100)}%  
                         </button>  
-                        <button   
-                            onClick={zoomIn}  
-                            className="control-btn"  
-                            title="Phóng to"  
-                        >  
-                            +  
-                        </button>  
-                    </div>  
-  
-                    <div className="view-controls">  
-                        <button   
-                            onClick={toggleFullscreen}  
-                            className="control-btn"  
-                            title={isFullscreen ? "Thoát toàn màn hình" : "Toàn màn hình"}  
-                        >  
-                            ⛶  
-                        </button>  
+                        <button onClick={zoomIn} className="control-btn">+</button>  
                     </div>  
                 </div>  
             </div>  
@@ -175,7 +134,7 @@ function GuidePage() {
             <div className="pdf-content">  
                 <div className="pdf-container">  
                     <Document  
-                        file="/guide.pdf"  
+                        file={`/novels/${novelId}.pdf`}  
                         onLoadSuccess={onDocumentLoadSuccess}  
                         loading={<div className="pdf-loading">Đang tải...</div>}  
                         error={<div className="pdf-error">Không thể tải PDF</div>}  
@@ -204,4 +163,4 @@ function GuidePage() {
     );  
 }  
   
-export default GuidePage;
+export default NovelPage;

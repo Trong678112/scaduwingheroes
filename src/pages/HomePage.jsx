@@ -111,8 +111,8 @@ function HomePage() {
                   
                 <p className="hero-subtitle">  
                     Kết hợp thẻ bài vật lý và công nghệ tương tác để ghi nhớ từ vựng   
-                    <span className="highlight">hiệu quả</span> và   
-                    <span className="highlight">thú vị</span> hơn bao giờ hết.  
+                    <span className="highlight"> hiệu quả</span> và   
+                    <span className="highlight"> thú vị</span> hơn bao giờ hết.  
                 </p>  
   
                 <div className="hero-buttons">  
