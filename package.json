@@ -1,33 +1,26 @@
 {
-  "name": "language-cards",
+  "name": "scaduwingheroes",
+  "version": "1.0.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "serve": "vite preview"
   },
   "dependencies": {
     "html5-qrcode": "^2.3.8",
-    "kuromoji": "^0.1.2",
-    "pdfjs-dist": "^5.3.93",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-pdf": "^7.7.1",
-    "react-router-dom": "^7.6.3",
-    "wanakana": "^5.3.1"
+    "react-router-dom": "^6.22.3"
   },
   "devDependencies": {
-    "@eslint/js": "^9.29.0",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "@vitejs/plugin-react": "^4.5.2",
-    "eslint": "^9.29.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.2.0",
-    "vite": "^7.0.0"
+    "@vitejs/plugin-react": "^4.1.0",
+    "npm-force-resolutions": "^0.0.10",
+    "vite": "^5.2.10"
+  },
+  "resolutions": {
+    "@rollup/rollup-linux-x64-gnu": "patch"
   }
 }
